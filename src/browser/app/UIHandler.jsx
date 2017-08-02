@@ -38,7 +38,6 @@ export default function UIHandler(Content) {
     }
 
     setUiInfos(ui) {
-      console.log(ui);
       this.setState({
         device: ui.device,
         viewport: ui.viewport,

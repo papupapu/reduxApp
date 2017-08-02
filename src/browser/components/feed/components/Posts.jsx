@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 
 import './Posts.css';
 
+const PostListPropTypes = {
+  isFetching: PropTypes.bool.isRequired,
+  selectedChannel: PropTypes.string.isRequired,
+  posts: PropTypes.instanceOf(Array).isRequired,
+  lastFetch: PropTypes.string,
+  refreshChannel: PropTypes.func.isRequired,
+};
+
+const PostListDefaultProps = {
+  lastFetch: '',
+};
+
 const PostList = ({ posts }) => (
   <ul>
     {
@@ -67,16 +79,6 @@ const Posts = ({ isFetching, selectedChannel, posts, lastFetch, refreshChannel }
   </div>
 );
 
+Posts.propTypes = PostListPropTypes;
+Posts.defaultProps = PostListDefaultProps;
 export default Posts;
-
-Posts.propTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  selectedChannel: PropTypes.string.isRequired,
-  posts: PropTypes.instanceOf(Array).isRequired,
-  lastFetch: PropTypes.string,
-  refreshChannel: PropTypes.func.isRequired,
-};
-
-Posts.defaultProps = {
-  lastFetch: '',
-};

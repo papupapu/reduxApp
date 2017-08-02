@@ -1,12 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import Hamburger from '../icons/Hamburger';
 import Avatar from '../icons/Avatar';
 
 import './Header.css';
+
+const HeaderPropTypes = {
+  isHome: PropTypes.bool.isRequired,
+  pageTitle: PropTypes.string.isRequired,
+  toggleSiteNavigation: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+};
 
 class Header extends React.Component {
   constructor(props) {
@@ -30,10 +37,21 @@ class Header extends React.Component {
           <nav id="sitenav" className="noTransition">
             <ul itemScope itemType="http://www.schema.org/SiteNavigationElement">
               <li>
-                <Link to="/">Home</Link>
+                <NavLink
+                  exact
+                  onClick={this.props.toggleSiteNavigation}
+                  to={'/'}
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <Link to="/reddit">Feed Reddit</Link>
+                <NavLink
+                  onClick={this.props.toggleSiteNavigation}
+                  to={'/reddit'}
+                >
+                  Feed Reddit
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -67,29 +85,12 @@ class Header extends React.Component {
                 </a>
               </li>
             </ul>
-          </menu>          
+          </menu>
         </div>
       </header>
     );
   }
 }
 
-/*
-          <a
-            className="modal_handle"
-            href=""
-            data-action="login"
-            onClick={(e) => { e.preventDefault(); openModal(e, { title: 'titolo', subtitle: 'sottotitolo' }); }}
-          >
-            modale
-          </a>
-*/
-
-Header.propTypes = {
-  isHome: PropTypes.bool.isRequired,
-  pageTitle: PropTypes.string.isRequired,
-  toggleSiteNavigation: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
-};
-
+Header.propTypes = HeaderPropTypes;
 export default Header;

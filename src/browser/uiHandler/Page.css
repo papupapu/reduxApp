@@ -160,11 +160,27 @@ html, body{
 	max-width:1140px;
 }
 
+.content .sw{
+	padding:0 1rem;
+}
+
+@media screen and (min-width: 736px) { /* Tablet */
+
+	.content .sw{
+		padding:0 2rem;
+	}
+
+}
+
 @media screen and (min-width: 950px) { /* Desktop */
 
 	.sw{
 		margin:0 2rem;
 	}	
+
+	.content .sw{
+		padding:0;
+	}
 
 }
 

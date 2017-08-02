@@ -2,7 +2,7 @@ import React from 'react';
 
 import { userDevice } from '../helpers/DOMHelpers';
 
-import './Default.css';
+import './Page.css';
 
 export default function UIHandler(Content) {
   class uiHandler extends React.Component {

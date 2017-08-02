@@ -10,7 +10,7 @@ const Avatar = ({ isAuthenticated }) => {
         <path
           className="canHover"
           d={path}
-          fill="#333f48"
+          fill="#999"
           fillRule="evenodd"
           transform="translate(-505 -468)"
         />
@@ -25,7 +25,7 @@ const Avatar = ({ isAuthenticated }) => {
           <path
             className="canHover"
             d={path1}
-            fill="#333f48"
+            fill="#999"
           />
           <circle cx="19.5" cy="17.5" fill="#00c694" r="7.5" stroke="#fff" strokeWidth="2" />
           <path

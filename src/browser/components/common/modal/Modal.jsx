@@ -9,10 +9,10 @@ class Modal extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.close = this.close.bind(this);
   }
 
-  handleClick(event) {
+  close(event) {
     event.preventDefault();
     this.props.close(event);
   }
@@ -177,7 +177,7 @@ class Modal extends React.Component {
 
   render() {
     const close = (
-      <a href={null} className="modal_handle" onClick={this.handleClick}>
+      <a href={null} className="modal_handle" onClick={this.close}>
         {Close()}
       </a>
     );

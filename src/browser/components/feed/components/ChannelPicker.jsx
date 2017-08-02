@@ -5,7 +5,15 @@ import Input from '../../common/input/Input';
 
 import './ChannelPicker.css';
 
-const ChannelPicker = ({ channels, selectedChannel, pickChannel, addChannel, openModal }) => {
+const ChannelPickerPropTypes = {
+  channels: PropTypes.instanceOf(Array).isRequired,
+  addChannel: PropTypes.func.isRequired,
+  selectedChannel: PropTypes.string.isRequired,
+  pickChannel: PropTypes.func.isRequired,
+  // openModal: PropTypes.func.isRequired,
+};
+
+const ChannelPicker = ({ channels, selectedChannel, pickChannel, addChannel/* , openModal*/ }) => {
   let input;
   return (
     <div className="channelpicker">
@@ -60,12 +68,5 @@ const ChannelPicker = ({ channels, selectedChannel, pickChannel, addChannel, ope
   );
 };
 
+ChannelPicker.propTypes = ChannelPickerPropTypes;
 export default ChannelPicker;
-
-ChannelPicker.propTypes = {
-  channels: PropTypes.instanceOf(Array).isRequired,
-  addChannel: PropTypes.func.isRequired,
-  selectedChannel: PropTypes.string.isRequired,
-  pickChannel: PropTypes.func.isRequired,
-  openModal: PropTypes.func.isRequired,
-};

@@ -3,6 +3,24 @@ import PropTypes from 'prop-types';
 
 import './Input.css';
 
+const InputPropTypes = {
+  type: PropTypes.string,
+  name: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  mandatory: PropTypes.bool,
+  synch: PropTypes.func,
+};
+
+const InputDefaultProps = {
+  type: 'text',
+  name: '',
+  placeholder: '',
+  value: '',
+  mandatory: false,
+  synch: () => {},
+};
+
 const validate = (name, value) => {
   switch (name) {
     case 'email': {
@@ -87,22 +105,6 @@ class Input extends React.Component {
   }
 }
 
-Input.propTypes = {
-  type: PropTypes.string,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
-  mandatory: PropTypes.bool,
-  synch: PropTypes.func,
-};
-
-Input.defaultProps = {
-  type: 'text',
-  name: '',
-  placeholder: '',
-  value: '',
-  mandatory: false,
-  synch: () => {},
-};
-
+Input.propTypes = InputPropTypes;
+Input.defaultProps = InputDefaultProps;
 export default Input;

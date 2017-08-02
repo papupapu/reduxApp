@@ -1,0 +1,54 @@
+.posts{
+  position:relative;
+}
+
+.posts h1{
+  margin:0 0 1rem;
+  font-size:2rem;
+}
+
+.posts p.time{
+  position:absolute; top:.7rem; right:0;
+  font-size:1.2rem; color:#878787;
+}
+
+.posts p.time a{
+  color:#676767; text-decoration:none;
+}
+
+.posts p.time a:hover{
+  color:#333;
+}
+
+.posts li{
+  margin-top:2.5rem; padding:1.5rem;
+  background:#FFF; border:1px solid #e1e1e1;
+  overflow:hidden;
+}
+
+.posts h2{
+  margin:0 0 .5rem;
+  font-weight:500; font-size:1.6rem; line-height:2.4rem; color:#303030;
+}
+
+.posts p.postinfos{
+  margin:0 0 1rem;
+  font-weight:300; font-size:1.3rem; line-height:2rem; color:#878787;
+}
+
+.posts p.postinfos span{
+  float:right;
+}
+
+.posts p.postinfos strong{
+  font-weight:300; color:#333;
+}
+
+.posts img{
+  float:left;
+  margin-right:1.5rem;
+}
+
+.posts p{
+  font-weight:300; font-size:1.4rem; line-height:2.4rem; color:#404040;
+}

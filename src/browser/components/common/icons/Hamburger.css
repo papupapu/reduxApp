@@ -1,0 +1,41 @@
+/*
+  text dark grey: 333f48;
+  text light grey: #6a7785;
+  
+  text footer grey: #9b9b9b;
+
+  red: #e4002b;
+  darker red: #a30000;
+
+  border standard: #e3e3e3;
+*/
+
+.hamburger{
+  display:block;
+	overflow: visible;
+	pointer-events: none;
+}
+
+.hamburger path{
+	fill:#333f48;
+	transition:all 150ms;
+}
+
+.hamburger path.white{
+	fill:#FFF;
+  opacity:0;
+}
+
+.menu_open .hamburger .a{
+  transform-origin: 4px 4px;
+  transform:rotate(45deg) scale(1.4,1);
+}
+
+.menu_open .hamburger .b{
+  opacity:0;
+}
+
+.menu_open .hamburger .c{
+  transform-origin: 3px 12px;
+  transform:rotate(-45deg) scale(1.4,1);
+}

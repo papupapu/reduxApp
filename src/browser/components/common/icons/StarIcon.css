@@ -1,0 +1,39 @@
+/*
+  text dark grey: 333f48;
+  text light grey: #6a7785;
+  
+  text footer grey: #9b9b9b;
+
+  red: #e4002b;
+  darker red: #a30000;
+
+  border standard: #e3e3e3;
+*/
+
+.star{
+  width:1.8rem;
+	overflow: visible;
+}
+
+.star path{
+  fill:#FFF;
+	stroke:#96a1b0;
+}
+
+a.present .star path{
+  fill:#EEBE00;
+	stroke:#EEBE00;
+}
+@media screen and (min-width: 950px) { /* Desktop */
+
+  a:hover .star path{
+    fill:#FFF;
+    stroke:#e4002b;
+  }
+
+  a.present:hover .star path{
+    fill:#EEBE00;
+    stroke:#EEBE00;
+  }  
+
+}

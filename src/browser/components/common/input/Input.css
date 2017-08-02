@@ -1,0 +1,40 @@
+input,
+input:-webkit-autofill{
+  font-size:1.6rem; line-height:2.2rem; color:#333f48;
+  background-color:#FFF; border:1px solid #d8dbdf; border-radius:2px;
+  transition: background-color 5000s ease-in-out 0s;  
+}
+
+.inFocus input{
+  border:1px solid #5FA7EA;
+}
+
+.correct input{
+  background-color:#FFF!important; border:1px solid #5CE429;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.wrong input{
+  border:1px solid #E48729;
+}
+
+.correct,
+.wrong{
+  position:relative;
+}
+
+.correct:after{
+  content:'';
+  position:absolute;
+  top:0; right:.5rem;
+  width:2.2rem; height:100%;
+  background:url(/portal/assets/images/input-correct.svg) calc(100% - .5rem) center no-repeat; background-size:18px auto; 
+}
+
+.wrong:after{
+  content:'';
+  position:absolute;
+  top:0; right:.5rem;
+  width:2.2rem; height:100%;
+  background:url(/portal/assets/images/input-wrong.svg) calc(100% - .5rem) center no-repeat; background-size:18px auto; 
+}

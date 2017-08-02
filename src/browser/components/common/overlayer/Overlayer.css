@@ -1,0 +1,71 @@
+/* REMOVE ON PRODUCTION */
+body.menu_open,
+body.modal_open,
+body.phoneCallConfirm_open,
+body.addBookmarkConfirm_open,
+body.filters_open{
+	position:relative;
+	overflow: hidden;
+}
+/* REMOVE ON PRODUCTION */
+
+.overlayer{
+	display:inline-block;
+	position:fixed; z-index:30;
+	top:0; left:0;
+	width:100vw; height:100vh;
+	background:rgb(0,0,0); opacity:0;
+	transform: translate(-100%,0);
+	transition: opacity .3s linear;
+}
+
+.overlayer a{
+	position:absolute;
+	top:0; left:0;
+	width:100%; height:100%;
+}
+
+.closing .overlayer{
+	opacity:0;
+	transform: translate(0,0);
+}
+
+body.menu_open,
+body.modal_open{
+	position:fixed;
+	width:100%;
+	overflow: hidden;
+}
+
+.menu_open .overlayer,
+.modal_open .overlayer,
+.phoneCallConfirm_open .overlayer,
+.addBookmarkConfirm_open .overlayer,
+.filters_open .overlayer{
+	opacity:.3;
+	transform: translate(0,0);
+}
+
+@media screen and (min-width: 736px) { /* tablet */
+
+	.menu_open .overlayer,
+	.modal_open .overlayer,
+	.phoneCallConfirm_open .overlayer,
+	.addBookmarkConfirm_open .overlayer,
+	.filters_open .overlayer{
+		opacity:.5;
+		transform: translate(0,0);
+	}
+
+}	
+
+@media screen and (min-width: 950px) { /* Desktop */
+	body.menu_open,
+	body.modal_open,
+	body.phoneCallConfirm_open,
+	body.addBookmarkConfirm_open,
+	body.filters_open{
+		position:relative;
+		overflow: hidden;
+	}
+}

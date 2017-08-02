@@ -1,0 +1,341 @@
+/*
+  HEADER
+*/
+
+#header{
+  position:relative; z-index:31;
+  width:100%; height:5rem;
+  line-height:5rem;
+  background:#FFF; border-bottom:1px solid #e3e3e3;
+  transition:all 300ms ease-out;
+}
+
+.static_header #header{
+  border-bottom:0 none;
+}
+
+.menu_open #header{
+  z-index:32;
+  border-bottom:1px solid #e3e3e3;
+}
+
+#header .logo{
+  margin:0 auto;
+  width:auto; height:100%;
+}
+
+#header .logo a{
+  display:block;
+  width:100%; height:5rem;
+  text-indent:-9999em;  
+  background:url(https://www.athome.lu/img/athomelu/logo.svg) center center no-repeat;
+  background-size:auto 3rem;
+}
+
+/*
+  MAIN NAVIGATION
+*/
+
+#sitenav{
+  position:fixed; z-index:10;
+  top:5rem; left:0;
+  width:85%; height:calc(100vh - 5rem);
+  background:#FFF; border-right:1px solid #e3e3e3;
+	transform: translate(-100%,0);
+	transition:all 300ms;
+	overflow-y:auto;
+}
+
+.menu_open #sitenav{
+	transform: translate(0,0);	
+}
+
+#sitenav.noTransition,
+.menu_open #sitenav.noTransition{
+  transition:0ms;
+}
+
+#sitenav li{
+  border-bottom:1px solid #e3e3e3;
+}
+
+#sitenav a{
+  display:block;
+  padding-left:1.7rem;
+  font:300 1.6rem/4.5rem 'Roboto', sans-serif; color:#333f48; text-decoration:none;
+  border-left:3px solid #FFF;
+}
+
+#sitenav a.current,
+#sitenav li:first-of-type a{
+  color:#e4002b;
+  border-left:3px solid #e4002b;
+}
+
+/*
+  ACTIONS MENU
+*/
+
+#sitemenu .menu_handle{
+  position:absolute;
+  top:0; left:0;
+  width:5rem; height:5rem;
+}
+
+#sitemenu .hamburger{
+	position:absolute; 
+	top:50%; left:1rem;
+  transform:translate(0,-50%);
+}
+
+#sitemenu .pubblica-annunci{
+  display:none;
+}
+
+#sitemenu .mycasa{
+  position:absolute;
+  top:0; right:0;
+  width:5rem; height:5rem;
+}
+
+#sitemenu .mycasa a{
+  display:block;
+  width:5rem; height:5rem;
+}
+
+#sitemenu .avatar{
+  position:absolute;
+  top:50%; right:1rem;
+  margin-top:-1rem;
+}
+
+/*
+  LANGUAGE SWITCH
+*/
+
+#header .select{
+  display:none;
+}
+
+@media screen and (min-width: 736px) { /* Tablet */
+
+  /*
+    HEADER
+  */
+
+  #header{
+    position:fixed;
+    top:0; left:0;
+    z-index:29;
+  }
+
+  #header .sw{
+    position:relative;
+    margin:0 2rem; padding:0;
+  }  
+
+  .static_header #header{
+    position:relative;
+  }
+
+  .full_header #header{
+    position:static;
+    margin:0;
+    width:100%; height:auto;
+    line-height:normal;
+  }  
+
+  .full_header #header .sw{
+    z-index:9;
+    padding:1.5rem 0 0;
+    height:11.5rem;
+    background:#FFF;
+  }  
+
+  .full_header #header .logo{
+    margin:0 auto; padding:0;
+    width:19rem; height:4.6rem;
+  }
+
+  .full_header #header .logo a{
+    width:100%; height:4.6rem;
+    background-size:auto 4.6rem;
+  }
+
+  /*
+    MAIN NAVIGATION
+  */  
+
+  .full_header #sitenav{
+    position:absolute;
+    top:auto; bottom:-.1rem; left:0;
+    width:auto; height:5.5rem;
+    background:transparent; border-right:0 none;
+    transform: translate(0,0);
+  }
+
+  .full_header #sitenav li{
+    float:left;
+    height:5.4rem;
+    border-bottom:0 none;
+  }
+
+  .full_header #sitenav a{
+    display:block; position:relative;
+    margin-right:1rem; padding:0 1.5rem;
+    font-size:1.4rem; line-height:5.4rem;
+    border-left:0 none;
+  }
+
+  .full_header #sitenav li:first-of-type a{
+    color:#333f48;
+    border-left:0 none;
+  }
+
+  .full_header #sitenav a.current:after,
+  .full_header #sitenav a:hover:after,
+  .full_header #sitenav li:first-of-type a:after{
+    content:'';
+    position:absolute;
+    bottom:-.1rem; left:0;
+    width:100%; height:.1rem;
+    background:#e4002b;
+  }  
+
+  /*
+    ACTIONS MENU
+  */
+
+  #sitemenu .hamburger{
+    left:0;
+  }
+
+  #sitemenu .avatar{
+    right:0;
+  }
+
+  .full_header #sitemenu{
+    position:absolute;
+    top:auto; bottom:.5rem; right:0;
+  }
+
+  .full_header #sitemenu li{
+    float:left;
+  }
+
+  .full_header #sitemenu a{
+    display:block;
+    font:300 1.4rem/4.4rem 'Roboto', sans-serif; color:#333f48; text-decoration:none;
+    border:0 none;
+  }
+
+  .full_header #sitemenu .menu_handle{
+    display:none;
+  }
+
+  .full_header #sitemenu .mycasa{
+    position:static;
+    top:auto; right:auto;
+    padding:0 0 0 1.2rem;
+    width:auto; height:auto;
+  }
+
+  .full_header #sitemenu .mycasa a{
+    width:auto; height:auto;
+  }  
+
+  .full_header #sitemenu .mycasa a:before{
+    content:'Accedi a MyCasa';
+  }
+
+  .full_header #sitemenu .avatar{
+    position:static; float:right;
+    top:auto; right:auto;
+    margin:1.1rem 0 0 .7rem;
+  }
+  
+  .full_header #sitemenu .mycasa a:hover{
+    color:#e4002b;
+  }
+
+  .full_header #sitemenu .mycasa:hover .avatar path.canHover{
+    fill:#e4002b;
+  }
+
+  /* 
+    LANGUAGE SWITCH 
+  */
+
+  .full_header #header .select{
+    display:block;
+    position:absolute;
+    top:-.8rem; right:15rem;
+    width:5rem;
+  }
+
+  .full_header #header .select .handle,
+  .full_header #header .select ul a{
+    line-height:2.2rem; text-transform:uppercase;
+  }
+
+  .full_header #header .select a.handle:after{
+    top:.8rem; right:.5rem;
+  }
+  .full_header #header .select ul a.selected:after{
+    right:.5rem;
+    width: 3px; height: 6px;
+  }
+
+ }
+
+@media screen and (min-width: 1040px) { /* Desktop */
+
+  #header .sw{
+    margin:0 2rem;
+  }
+
+  /*
+    ACTIONS MENU
+  */
+  
+  #sitemenu .hamburger{
+    left:0;
+  }
+
+  #sitemenu .avatar{
+    right:0;
+  }
+
+}
+
+@media screen and (min-width: 1180px) { /* Desktop */
+
+  #header .sw{
+    margin:0 auto;
+  }
+
+}
+
+@media screen and (min-width: 1300px) { /* Desktop */
+
+  .full_header #header .sw{
+    padding-left:0; padding-right:0;
+  }
+
+  /*
+    MAIN NAVIGATION
+  */    
+
+  .full_header #sitenav{
+    left:0;
+  } 
+
+  /*
+    ACTIONS MENU
+  */   
+
+  .full_header #sitemenu .mycasa{
+    right:0;
+  }  
+
+}

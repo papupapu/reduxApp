@@ -1,0 +1,64 @@
+.channelpicker{
+  margin-bottom:2.5rem;
+  font-size:1.4rem; line-height:5rem; color:#f0f0f0;
+  background:#333;
+  overflow:hidden;
+}
+
+.channelpicker p{
+  float:left;
+  width:calc(100% - 30rem);
+}
+
+.channelpicker p span,
+.channelpicker p a{
+  display:inline-block;
+  padding:0 1.5rem;
+  text-transform:uppercase;
+}
+
+.channelpicker p span{
+  position:relative;
+  color:#f90;
+}
+
+.channelpicker p span:after{
+  content:'';
+  position:absolute; bottom:0; left:0;
+  width:100%; height:.2rem;
+  background:#f90;
+}
+
+.channelpicker p a{
+  color:#f0f0f0; text-decoration:none;
+}
+
+.channelpicker p a:hover{
+  color:#f90;
+}
+
+.channelpicker .fakeform{
+  float:left;
+  width:30rem;
+}
+
+.channelpicker .fakeform .inputContainer{
+  float:left;
+  margin:1rem 1rem 0 0;
+  width:23rem; height:3rem;
+}
+
+.channelpicker .fakeform .inputContainer input{
+  display:block;
+  padding:0 .5rem;
+  width:100%; height:3rem;
+  font-size:1.2rem; line-height:3rem;
+  border:0 none; border-radius:5px;
+}
+
+.channelpicker .fakeform button{
+  width:6rem; height:3rem;
+  font-weight:700; font-size:1.2rem; line-height:3rem; text-transform:uppercase;
+  background:#f90; border:0 none; border-radius:5px;
+}
+

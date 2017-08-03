@@ -8,12 +8,12 @@ import './ChannelPicker.css';
 const ChannelPickerPropTypes = {
   channels: PropTypes.instanceOf(Array).isRequired,
   addChannel: PropTypes.func.isRequired,
-  selectedChannel: PropTypes.string.isRequired,
+  feedSelectedChannel: PropTypes.string.isRequired,
   pickChannel: PropTypes.func.isRequired,
   // openModal: PropTypes.func.isRequired,
 };
 
-const ChannelPicker = ({ channels, selectedChannel, pickChannel, addChannel/* , openModal*/ }) => {
+const ChannelPicker = ({ channels, feedSelectedChannel, pickChannel, addChannel/* , openModal*/ }) => {
   let input;
   return (
     <div className="channelpicker">
@@ -23,7 +23,7 @@ const ChannelPicker = ({ channels, selectedChannel, pickChannel, addChannel/* , 
             channels.map(
               (channel, index) => {
                 const ind = index;
-                if (channel === selectedChannel) {
+                if (channel === feedSelectedChannel) {
                   return (
                     <span key={`channel-picker-${ind}`}>{channel}</span>
                   );

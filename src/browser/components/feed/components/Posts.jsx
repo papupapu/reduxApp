@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import './Posts.css';
 
 const PostListPropTypes = {
-  isFetching: PropTypes.bool.isRequired,
-  selectedChannel: PropTypes.string.isRequired,
+  isFetchingFeed: PropTypes.bool.isRequired,
+  feedSelectedChannel: PropTypes.string.isRequired,
   posts: PropTypes.instanceOf(Array).isRequired,
   lastFetch: PropTypes.string,
   refreshChannel: PropTypes.func.isRequired,
@@ -49,17 +49,17 @@ PostList.propTypes = {
   posts: PropTypes.instanceOf(Array).isRequired,
 };
 
-const Posts = ({ isFetching, selectedChannel, posts, lastFetch, refreshChannel }) => (
+const Posts = ({ isFetchingFeed, feedSelectedChannel, posts, lastFetch, refreshChannel }) => (
   <div className="posts">
-    <h1>{selectedChannel}</h1>
+    <h1>{feedSelectedChannel}</h1>
     {
-      !isFetching &&
+      !isFetchingFeed &&
         <p className="time">
           Last updated: {lastFetch}
           {' '}-{' '}
           <a
             href=""
-            onClick={(e) => { e.preventDefault(); refreshChannel(selectedChannel); }}
+            onClick={(e) => { e.preventDefault(); refreshChannel(feedSelectedChannel); }}
             title="Get the latest posts"
           >
             Refresh feed
@@ -67,7 +67,7 @@ const Posts = ({ isFetching, selectedChannel, posts, lastFetch, refreshChannel }
         </p>
     }
     <div
-      style={{ opacity: isFetching ? 0.5 : 1 }}
+      style={{ opacity: isFetchingFeed ? 0.5 : 1 }}
     >
       {
         posts.length > 0 &&

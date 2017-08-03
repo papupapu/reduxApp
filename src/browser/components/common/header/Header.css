@@ -244,7 +244,7 @@
   }  
 
   .full_header #sitemenu .mycasa a:before{
-    content:'Accedi a MyCasa';
+    content:'Sign in';
   }
 
   .full_header #sitemenu .avatar{

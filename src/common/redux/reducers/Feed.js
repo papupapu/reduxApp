@@ -1,20 +1,20 @@
-import CHANNELS from '../../constants/Settings';
+import FEED_CHANNELS from '../../constants/Settings';
 
 import {
-  ADD_CHANNEL,
-  SELECT_CHANNEL,
-  INVALIDATE_CHANNEL,
-  FETCH_POSTS_REQUEST,
-  FETCH_POSTS_SUCCESS,
-} from '../actions/Actions';
+  ADD_FEED_CHANNEL,
+  SELECT_FEED_CHANNEL,
+  INVALIDATE_FEED_CHANNEL,
+  FETCH_FEED_REQUEST,
+  FETCH_FEED_SUCCESS,
+} from '../actions/Feed';
 
 const initialChannelsState = {
-  channels: CHANNELS,
+  channels: FEED_CHANNELS,
 };
 
-export function channelList(state = initialChannelsState, action) {
+export function feedChannelList(state = initialChannelsState, action) {
   switch (action.type) {
-    case ADD_CHANNEL:
+    case ADD_FEED_CHANNEL:
       return Object.assign(
         {},
         state,
@@ -27,25 +27,25 @@ export function channelList(state = initialChannelsState, action) {
   }
 }
 
-export function selectedChannel(state = initialChannelsState.channels[0], action) {
+export function feedSelectedChannel(state = initialChannelsState.channels[0], action) {
   switch (action.type) {
-    case SELECT_CHANNEL:
+    case SELECT_FEED_CHANNEL:
       return action.channel;
     default:
       return state;
   }
 }
 
-function posts(
+function feedPosts(
   state = {
-    isFetching: false,
+    isFetchingFeed: false,
     didInvalidate: false,
     items: [],
   },
   action,
 ) {
   switch (action.type) {
-    case INVALIDATE_CHANNEL:
+    case INVALIDATE_FEED_CHANNEL:
       return Object.assign(
         {},
         state,
@@ -53,21 +53,21 @@ function posts(
           didInvalidate: true,
         },
       );
-    case FETCH_POSTS_REQUEST:
+    case FETCH_FEED_REQUEST:
       return Object.assign(
         {},
         state,
         {
-          isFetching: true,
+          isFetchingFeed: true,
           didInvalidate: false,
         },
       );
-    case FETCH_POSTS_SUCCESS:
+    case FETCH_FEED_SUCCESS:
       return Object.assign(
         {},
         state,
         {
-          isFetching: false,
+          isFetchingFeed: false,
           didInvalidate: false,
           items: action.posts,
           lastFetch: action.lastFetch,
@@ -78,16 +78,16 @@ function posts(
   }
 }
 
-export function postsByChannel(state = {}, action) {
+export function feedPostsByChannel(state = {}, action) {
   switch (action.type) {
-    case INVALIDATE_CHANNEL:
-    case FETCH_POSTS_REQUEST:
-    case FETCH_POSTS_SUCCESS:
+    case INVALIDATE_FEED_CHANNEL:
+    case FETCH_FEED_REQUEST:
+    case FETCH_FEED_SUCCESS:
       return Object.assign(
         {},
         state,
         {
-          [action.channel]: posts(state[action.channel], action),
+          [action.channel]: feedPosts(state[action.channel], action),
         },
       );
     default:

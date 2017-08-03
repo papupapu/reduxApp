@@ -16,10 +16,10 @@ const FeedPropTypes = {
   modalType: PropTypes.string.isRequired,
   toggleSiteHiddenComponents: PropTypes.func.isRequired,
   // view specific
-  channelList: PropTypes.instanceOf(Object).isRequired,
-  selectedChannel: PropTypes.string.isRequired,
+  feedChannelList: PropTypes.instanceOf(Object).isRequired,
+  feedSelectedChannel: PropTypes.string.isRequired,
   posts: PropTypes.instanceOf(Array).isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  isFetchingFeed: PropTypes.bool.isRequired,
   lastFetch: PropTypes.string,
   fetchPosts: PropTypes.func.isRequired,
   addChannel: PropTypes.func.isRequired,
@@ -34,17 +34,17 @@ const FeedDefaultProps = {
 class Feed extends React.Component {
   constructor(props) {
     super(props);
-    this.channels = props.channelList.channels;
+    this.channels = props.feedChannelList.channels;
   }
 
-  componentDidMount() {
-    const { fetchPosts, selectedChannel } = this.props;
-    fetchPosts(selectedChannel);
+  componentWillMount() {
+    const { fetchPosts, feedSelectedChannel } = this.props;
+    fetchPosts(feedSelectedChannel);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.channelList.channels.length !== this.props.channelList.channels.length) {
-      this.channels = nextProps.channelList.channels;
+    if (nextProps.feedChannelList.channels.length !== this.props.feedChannelList.channels.length) {
+      this.channels = nextProps.feedChannelList.channels;
     }
   }
 
@@ -58,8 +58,8 @@ class Feed extends React.Component {
       modalType,
       toggleSiteHiddenComponents,
       // view specific
-      selectedChannel,
-      isFetching,
+      feedSelectedChannel,
+      isFetchingFeed,
       posts,
       lastFetch,
       addChannel,
@@ -80,15 +80,15 @@ class Feed extends React.Component {
         <div className="content">
           <ChannelPicker
             channels={this.channels}
-            selectedChannel={selectedChannel}
+            feedSelectedChannel={feedSelectedChannel}
             pickChannel={pickChannel}
             addChannel={addChannel}
             openModal={toggleSiteHiddenComponents}
           />
           <div className="sw">
             <Posts
-              isFetching={isFetching}
-              selectedChannel={selectedChannel}
+              isFetchingFeed={isFetchingFeed}
+              feedSelectedChannel={feedSelectedChannel}
               posts={posts}
               lastFetch={lastFetch}
               refreshChannel={refreshChannel}

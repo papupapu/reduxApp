@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
-import * as reducers from './Reducers';
+import postsByCategory from './Home';
+import { feedChannelList, feedSelectedChannel, feedPostsByChannel } from './Feed';
 
-const fetchApp = combineReducers(reducers);
-export default fetchApp;
+const appReducer = combineReducers({
+  postsByCategory,
+  feedChannelList,
+  feedSelectedChannel,
+  feedPostsByChannel,
+});
+export default appReducer;

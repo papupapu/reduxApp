@@ -1,53 +1,53 @@
 import { connect } from 'react-redux';
 
 import {
-  addChannel,
-  selectChannel,
-  invalidateChannel,
-  fetchPostsIfNeeded,
-} from '../../common/redux/actions/Actions';
+  addFeedChannel,
+  selectFeedChannel,
+  invalidateFeedChannel,
+  fetchFeedPostsIfNeeded,
+} from '../../common/redux/actions/Feed';
 
 import Feed from '../components/feed/Feed';
 
 const mapStateToProps = (state) => {
   const {
-    channelList,
-    selectedChannel,
-    postsByChannel,
+    feedChannelList,
+    feedSelectedChannel,
+    feedPostsByChannel,
   } = state;
 
   const {
-    isFetching,
+    isFetchingFeed,
     lastFetch,
     items: posts,
-  } = postsByChannel[selectedChannel] || {
-    isFetching: true,
+  } = feedPostsByChannel[feedSelectedChannel] || {
+    isFetchingFeed: true,
     items: [],
   };
 
   return {
-    channelList,
-    selectedChannel,
+    feedChannelList,
+    feedSelectedChannel,
     posts,
-    isFetching,
+    isFetchingFeed,
     lastFetch,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchPosts: (channel) => {
-    dispatch(fetchPostsIfNeeded(channel));
+    dispatch(fetchFeedPostsIfNeeded(channel));
   },
   addChannel: (channel) => {
-    dispatch(addChannel(channel));
+    dispatch(addFeedChannel(channel));
   },
   pickChannel: (channel) => {
-    dispatch(selectChannel(channel));
-    dispatch(fetchPostsIfNeeded(channel));
+    dispatch(selectFeedChannel(channel));
+    dispatch(fetchFeedPostsIfNeeded(channel));
   },
   refreshChannel: (channel) => {
-    dispatch(invalidateChannel(channel));
-    dispatch(fetchPostsIfNeeded(channel));
+    dispatch(invalidateFeedChannel(channel));
+    dispatch(fetchFeedPostsIfNeeded(channel));
   },
 });
 

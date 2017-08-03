@@ -15,7 +15,10 @@ const mapStateToProps = (state, { match }) => {
   :
     [];
 
-  return { category, posts };
+  return {
+    category,
+    posts,
+  };
 };
 
 const mapDispatchToProps = dispatch => ({

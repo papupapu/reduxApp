@@ -70,8 +70,8 @@ class Feed extends React.Component {
     return (
       <Page
         isFullpage={false}
-        isHome={false}
-        pageTitle="Reddit Feeds - Project"
+        isDetail={false}
+        pageTitle="Reddit Feeds - Papui"
         modal={modal}
         modalData={modalData}
         modalType={modalType}

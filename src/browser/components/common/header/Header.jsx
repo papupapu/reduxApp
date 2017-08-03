@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import Hamburger from '../icons/Hamburger';
 import Avatar from '../icons/Avatar';
@@ -11,7 +11,7 @@ import { CATEGORIES } from '../../../../common/constants/Articles';
 import './Header.css';
 
 const HeaderPropTypes = {
-  isHome: PropTypes.bool.isRequired,
+  isDetail: PropTypes.bool.isRequired,
   pageTitle: PropTypes.string.isRequired,
   toggleSiteNavigation: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
@@ -21,12 +21,14 @@ const categoriesList = (onClickAction) => {
   const list = [];
   CATEGORIES.forEach(
     (el) => {
+      const exactLink = el.label === 'Home';
       list.push(
         <li key={`nav-${el.path}`}>
           <NavLink
-            exact
+            exact={exactLink}
             onClick={onClickAction}
             to={`/${el.path}`}
+            title={el.label}
           >
             {el.label}
           </NavLink>
@@ -43,13 +45,13 @@ class Header extends React.Component {
   }
 
   render() {
-    const logo = this.props.isHome ? (
+    const logo = this.props.isDetail ? (
       <h1 className="logo">
-        <a href="/" title={this.props.pageTitle}>{this.props.pageTitle}</a>
+        <Link to="/" title={this.props.pageTitle}>{this.props.pageTitle}</Link>
       </h1>
     ) : (
       <div className="logo">
-        <a href="/" title={this.props.pageTitle}>{this.props.pageTitle}</a>
+        <Link to="/" title={this.props.pageTitle}>{this.props.pageTitle}</Link>
       </div>
     );
     const menu = categoriesList(this.props.toggleSiteNavigation);
@@ -60,22 +62,14 @@ class Header extends React.Component {
           {logo}
           <nav id="sitenav" className="noTransition">
             <ul itemScope itemType="http://www.schema.org/SiteNavigationElement">
-              <li>
-                <NavLink
-                  exact
-                  onClick={this.props.toggleSiteNavigation}
-                  to={'/'}
-                >
-                  Home
-                </NavLink>
-              </li>
               {menu}
               <li>
                 <NavLink
                   onClick={this.props.toggleSiteNavigation}
                   to={'/reddit'}
+                  title="Reddit Feed"
                 >
-                  Feed Reddit
+                  Reddit Feed
                 </NavLink>
               </li>
             </ul>
@@ -99,7 +93,7 @@ class Header extends React.Component {
                 <a
                   className="modal_handle"
                   href=""
-                  title="Accedi a MyCasa"
+                  title="Sign in"
                   data-action="login"
                   onClick={(evt) => {
                     evt.preventDefault();

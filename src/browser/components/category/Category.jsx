@@ -29,6 +29,7 @@ const CategoryPropTypes = {
   modalData: PropTypes.instanceOf(Object).isRequired,
   modalType: PropTypes.string.isRequired,
   toggleSiteHiddenComponents: PropTypes.func.isRequired,
+
   // view specific
   category: PropTypes.string.isRequired,
   posts: PropTypes.instanceOf(Array).isRequired,
@@ -89,20 +90,24 @@ class Category extends React.Component {
 
   render() {
     const {
+      // ui specific
       modal,
       modalData,
       modalType,
       posts,
       toggleSiteHiddenComponents,
+
+      // view specific
+      category,
     } = this.props;
 
     const mainArticle = posts.length > 0 ? this.mainArticle() : null;
-    const listing = posts.length > 1 ? this.articlesList() : null;
+    const listing = posts.length > 1 ? this.articlesList('h3') : null;
     return (
       <Page
         isFullpage={false}
-        isHome={false}
-        pageTitle="Project"
+        isDetail={false}
+        pageTitle={`${category} - Papui`}
         modal={modal}
         modalData={modalData}
         modalType={modalType}

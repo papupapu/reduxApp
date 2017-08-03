@@ -1,6 +1,11 @@
 /* SITE CATEGORIES */
 export const CATEGORIES = [
   {
+    path: '',
+    label: 'Home',
+    description: '',
+  },
+  {
     path: 'surf',
     label: 'Surf',
     description: '',

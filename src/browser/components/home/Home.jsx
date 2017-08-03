@@ -30,8 +30,9 @@ const HomePropTypes = {
   modalType: PropTypes.string.isRequired,
   toggleSiteHiddenComponents: PropTypes.func.isRequired,
   // view specific
-  fetchPosts: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
   posts: PropTypes.instanceOf(Array).isRequired,
+  fetchPosts: PropTypes.func.isRequired,
 };
 
 class Home extends React.Component {
@@ -43,7 +44,8 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchPosts('home');
+    const { category, fetchPosts } = this.props;
+    fetchPosts(category);
   }
 
   componentWillReceiveProps(newProps) {
@@ -95,12 +97,12 @@ class Home extends React.Component {
     } = this.props;
 
     const mainArticle = posts.length > 0 ? this.mainArticle() : null;
-    const listing = posts.length > 1 ? this.articlesList() : null;
+    const listing = posts.length > 1 ? this.articlesList('h3') : null;
     return (
       <Page
         isFullpage={false}
-        isHome
-        pageTitle="Project"
+        isDetail={false}
+        pageTitle="Papui"
         modal={modal}
         modalData={modalData}
         modalType={modalType}

@@ -4,16 +4,21 @@ import { fetchPostsIfNeeded } from '../../common/redux/actions/Home';
 
 import Home from '../components/home/Home';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, { match }) => {
   const {
     postsByCategory,
   } = state;
 
-  const posts = postsByCategory.home && postsByCategory.home.items ?
-    postsByCategory.home.items
+  const category = 'home';
+  const posts = postsByCategory[category] && postsByCategory[category].items ?
+    postsByCategory[category].items
   :
     [];
-  return { posts };
+
+  return {
+    category,
+    posts,
+  };
 };
 
 const mapDispatchToProps = dispatch => ({

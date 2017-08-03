@@ -6,11 +6,22 @@ import Footer from '../components/common/footer/Footer';
 import Modal from '../components/common/modal/Modal';
 import Overlayer from '../components/common/overlayer/Overlayer';
 
-const App = (
+const PagePropTypes = {
+  children: PropTypes.instanceOf(Object).isRequired,
+  isFullpage: PropTypes.bool.isRequired,
+  isDetail: PropTypes.bool.isRequired,
+  pageTitle: PropTypes.string.isRequired,
+  modal: PropTypes.bool.isRequired,
+  modalData: PropTypes.instanceOf(Object).isRequired,
+  modalType: PropTypes.string.isRequired,
+  toggleSiteHiddenComponents: PropTypes.func.isRequired,
+};
+
+const Page = (
   {
     children,
     isFullpage,
-    isHome,
+    isDetail,
     pageTitle,
     modal,
     modalType,
@@ -44,7 +55,7 @@ const App = (
     code = (
       <div className="root full_header">
         <Header
-          isHome={isHome}
+          isDetail={isDetail}
           pageTitle={pageTitle}
           toggleSiteNavigation={toggleSiteHiddenComponents}
           openModal={toggleSiteHiddenComponents}
@@ -72,15 +83,5 @@ const App = (
   return code;
 };
 
-App.propTypes = {
-  children: PropTypes.instanceOf(Object).isRequired,
-  isFullpage: PropTypes.bool.isRequired,
-  isHome: PropTypes.bool.isRequired,
-  pageTitle: PropTypes.string.isRequired,
-  modal: PropTypes.bool.isRequired,
-  modalData: PropTypes.instanceOf(Object).isRequired,
-  modalType: PropTypes.string.isRequired,
-  toggleSiteHiddenComponents: PropTypes.func.isRequired,
-};
-
-export default App;
+Page.propTypes = PagePropTypes;
+export default Page;

@@ -2,6 +2,26 @@ import React from 'react';
 
 import Article from '../article/Article';
 
+const ListPropTypes = {
+  device: React.PropTypes.string,
+  viewport: React.PropTypes.instanceOf(Object),
+  list: React.PropTypes.instanceOf(Array),
+  titleTag: React.PropTypes.string,
+  maxToShow: React.PropTypes.number,
+  contentType: React.PropTypes.string,
+  openModal: React.PropTypes.func,
+};
+
+const ListDefaultProps = {
+  device: '',
+  viewport: {},
+  list: {},
+  titleTag: '',
+  maxToShow: 0,
+  contentType: '',
+  openModal: () => {},
+};
+
 class List extends React.Component {
 
   // why should we rerender? let us think about this...
@@ -40,24 +60,6 @@ class List extends React.Component {
   }
 }
 
-List.propTypes = {
-  device: React.PropTypes.string,
-  viewport: React.PropTypes.instanceOf(Object),
-  list: React.PropTypes.instanceOf(Array),
-  titleTag: React.PropTypes.string,
-  maxToShow: React.PropTypes.number,
-  contentType: React.PropTypes.string,
-  openModal: React.PropTypes.func,
-};
-
-List.defaultProps = {
-  device: '',
-  viewport: {},
-  list: {},
-  titleTag: '',
-  maxToShow: 0,
-  contentType: '',
-  openModal: () => {},
-};
-
+List.propTypes = ListPropTypes;
+List.defaultProps = ListDefaultProps;
 export default List;

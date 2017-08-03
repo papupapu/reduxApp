@@ -11,6 +11,34 @@ import CorrectMediaSizes from '../../../helpers/CorrectMediaSizes';
 
 import StarIcon from '../icons/StarIcon';
 
+const CoverItemPropTypes = {
+  device: React.PropTypes.string,
+  viewport: React.PropTypes.instanceOf(Object),
+  id: React.PropTypes.string,
+  category: React.PropTypes.string,
+  title: React.PropTypes.string,
+  subtitle: React.PropTypes.string,
+  infos: React.PropTypes.instanceOf(Object),
+  media: React.PropTypes.instanceOf(Array),
+  titleTag: React.PropTypes.string,
+  subtitleTag: React.PropTypes.string,
+  openModal: React.PropTypes.func,
+};
+
+const CoverItemDefaultProps = {
+  device: '',
+  viewport: {},
+  id: '',
+  category: '',
+  title: '',
+  subtitle: '',
+  infos: {},
+  media: [],
+  titleTag: '',
+  subtitleTag: '',
+  openModal: () => {},
+};
+
 class CoverItem extends React.Component {
 
   constructor(props) {
@@ -161,33 +189,7 @@ class CoverItem extends React.Component {
   }
 }
 
-CoverItem.propTypes = {
-  device: React.PropTypes.string,
-  viewport: React.PropTypes.instanceOf(Object),
-  id: React.PropTypes.string,
-  category: React.PropTypes.string,
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  infos: React.PropTypes.instanceOf(Object),
-  media: React.PropTypes.instanceOf(Array),
-  titleTag: React.PropTypes.string,
-  subtitleTag: React.PropTypes.string,
-  openModal: React.PropTypes.func,
-};
-
-CoverItem.defaultProps = {
-  device: '',
-  viewport: {},
-  id: '',
-  category: '',
-  title: '',
-  subtitle: '',
-  infos: {},
-  media: [],
-  titleTag: '',
-  subtitleTag: '',
-  openModal: () => {},
-};
-
+CoverItem.propTypes = CoverItemPropTypes;
+CoverItem.defaultProps = CoverItemDefaultProps;
 export default CoverItem;
 

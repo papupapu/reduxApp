@@ -12,6 +12,30 @@ import CorrectMediaSizes from '../../../helpers/CorrectMediaSizes';
 
 import StarIcon from '../icons/StarIcon';
 
+const DetailItemPropTypes = {
+  device: React.PropTypes.string,
+  viewport: React.PropTypes.instanceOf(Object),
+  id: React.PropTypes.string,
+  category: React.PropTypes.string,
+  heading: React.PropTypes.instanceOf(Object),
+  titleTag: React.PropTypes.string,
+  subtitleTag: React.PropTypes.string,
+  body: React.PropTypes.instanceOf(Array),
+  openModal: React.PropTypes.func,
+};
+
+const DetailItemDefaultProps = {
+  device: '',
+  viewport: {},
+  id: '',
+  category: '',
+  heading: {},
+  titleTag: '',
+  subtitleTag: '',
+  body: [],
+  openModal: () => {},
+};
+
 class DetailItem extends React.Component {
 
   componentDidMount() {
@@ -208,29 +232,7 @@ class DetailItem extends React.Component {
   }
 }
 
-DetailItem.propTypes = {
-  device: React.PropTypes.string,
-  viewport: React.PropTypes.instanceOf(Object),
-  id: React.PropTypes.string,
-  category: React.PropTypes.string,
-  heading: React.PropTypes.instanceOf(Object),
-  titleTag: React.PropTypes.string,
-  subtitleTag: React.PropTypes.string,
-  body: React.PropTypes.instanceOf(Array),
-  openModal: React.PropTypes.func,
-};
-
-DetailItem.defaultProps = {
-  device: '',
-  viewport: {},
-  id: '',
-  category: '',
-  heading: {},
-  titleTag: '',
-  subtitleTag: '',
-  body: [],
-  openModal: () => {},
-};
-
+DetailItem.propTypes = DetailItemPropTypes;
+DetailItem.defaultProps = DetailItemDefaultProps;
 export default DetailItem;
 

@@ -1,7 +1,9 @@
 import React from 'react';
+
 import CoverItem from './CoverItem';
 import ListItem from './ListItem';
 import DetailItem from './DetailItem';
+
 import { SUBTITLE_TAG } from '../../../../common/constants/Articles';
 
 /*

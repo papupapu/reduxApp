@@ -8,13 +8,17 @@ const mapStateToProps = (state) => {
   const {
     postsByCategory,
   } = state;
-  const posts = postsByCategory.home && postsByCategory.home.items ? postsByCategory.home.items : [];
+
+  const posts = postsByCategory.home && postsByCategory.home.items ?
+    postsByCategory.home.items
+  :
+    [];
   return { posts };
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchPosts: (channel) => {
-    dispatch(fetchPostsIfNeeded(channel));
+  fetchPosts: (category) => {
+    dispatch(fetchPostsIfNeeded(category));
   },
 });
 

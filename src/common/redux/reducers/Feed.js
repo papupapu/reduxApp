@@ -1,4 +1,4 @@
-import FEED_CHANNELS from '../../constants/Settings';
+import { FEED_CHANNELS } from '../../constants/Settings';
 
 import {
   ADD_FEED_CHANNEL,

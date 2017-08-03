@@ -1,9 +1,14 @@
-const FEED_CHANNELS = [
+export const FOOTER_QUOTE = 'But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.';
+
+export const IMAGE_SIZES = {
+  desktop: '1000x751',
+  tablet: '768x577',
+  smartphone: '345x259',
+};
+
+export const IMAGE_SERVER = 'http://res.cloudinary.com/dia4050i1/image/upload/v1491748513';
+
+export const FEED_CHANNELS = [
   'reactjs',
   'funny',
 ];
-
-export default FEED_CHANNELS;
-
-
-// http://esapi.dev.casa.it/v1/listings/search/{"sites":["casa"],"channel":"vendita","localities":[{"key":"lombardia","value":112,"locality":"lombardia","displayValue":"lombardia","withZones":false}],"pageSize":"20","page":"1","sortType":"relevance","filters":{"category":"residenziale","propertyTypes":[],"priceRange":{"minimum":"Any","maximum":"Any"},"roomsRange":{"minimum":"any"},"features":{"interiorFeatures":[],"exteriorFeatures":[]},"onlyWithPhoto":false,"minimumBathroom":"any","minimumCars":"any","agentCategory":"all","landSize":{"minimum":"Any","maximum":"Any"},"surroundingSuburbs":true}}?expand=SEOLinks

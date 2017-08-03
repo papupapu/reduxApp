@@ -1,0 +1,157 @@
+.gallery img{
+  width:100%;
+}
+
+.gallery .sliderContainer{
+  position:relative;
+  width:100%; height:100%;
+  overflow:hidden;
+}
+
+.gallery .slider{
+  transform:translate(0,0);
+  -webkit-overflow-scrolling: touch;  
+}
+
+.gallery .slider.notouch{
+  transition: transform .3s ease-in;
+}
+
+.gallery .slider li{
+  float:left;
+}
+
+.gallery .prev,
+.gallery .next{
+  display:none;
+  position:absolute;
+  top:0;
+  width:4.5rem; height:100%;
+  opacity:.3;
+  z-index:1;
+  pointer-events: none;
+}
+
+.gallery .prev.active,
+.gallery .next.active{
+  display:block;
+}
+
+.gallery .prev{
+ left:0;
+}
+
+.gallery .next{
+  right:0;
+}
+
+.gallery .prev svg,
+.gallery .next svg{
+  position:absolute;
+  top:50%;
+  width:3rem; height:auto;
+}
+
+.gallery .prev svg{
+  left:.7rem;
+  transform:translate(0,-50%);
+}
+
+.gallery .next svg{
+  right:.7rem;  
+  transform:translate(0,-50%) rotateY(180deg);
+}
+
+.gallery .prev svg path,
+.gallery .next svg path{
+  fill:#FFF;
+}
+
+.gallery p.textCounter{
+  position:absolute;
+  top:0; left:0;
+  min-width:5rem;
+  font-weight:700; font-size:1.4rem; line-height:3.6rem; color:#FFF; text-align:center;
+}
+
+/* fullPage */
+
+.fullPage{
+  position:relative;
+  width:100vw; height:100vh;
+}
+
+.fullPage .gallery{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+}
+
+.fullPage .gallery img{
+  width:0; height:0;
+}
+
+.fullPage .gallery .slider li{
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.fullPage .gallery p.textCounter{
+  padding:0;
+  min-width:5.6rem;
+  line-height:5.6rem;
+}
+
+.fullPage .goBack{
+  position:absolute; z-index:2;
+  top:0; right:0;
+  padding:1.5rem;
+}
+
+.fullPage .goBack svg{
+  width:2.5rem; height:2.5rem;
+}
+
+.fullPage .goBack svg path{
+  fill:#FFF;
+}
+
+@media only screen  and (orientation: portrait) {
+
+  .fullPage .gallery .slider li{
+    background-color:#202020;
+    background-size:100% auto;  
+  }
+
+  .fullPage .goBack{
+    opacity:1;
+  }
+}
+
+@media only screen and (min-width: 768px){
+
+  .gallery p.textCounter{
+    font-weight:700; font-size:1.4rem; line-height:4.5rem; color:#FFF;
+  }  
+
+}
+
+@media only screen and (min-width: 950px){
+
+  .gallery .prev,
+  .gallery .next{
+    pointer-events: auto;
+  }
+
+  .fullPage:hover .goBack{
+    opacity:.3;
+  }
+
+  .gallery:hover .prev,
+  .gallery:hover .next,
+  .fullPage:hover .goBack{
+    opacity:.7;
+  }  
+  
+}

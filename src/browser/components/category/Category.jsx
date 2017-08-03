@@ -21,7 +21,7 @@ const elementsFromProps = (data) => {
   return { main, list };
 };
 
-const HomePropTypes = {
+const CategoryPropTypes = {
   // ui specific
   device: PropTypes.string.isRequired,
   viewport: PropTypes.instanceOf(Object).isRequired,
@@ -30,11 +30,12 @@ const HomePropTypes = {
   modalType: PropTypes.string.isRequired,
   toggleSiteHiddenComponents: PropTypes.func.isRequired,
   // view specific
-  fetchPosts: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
   posts: PropTypes.instanceOf(Array).isRequired,
+  fetchPosts: PropTypes.func.isRequired,
 };
 
-class Home extends React.Component {
+class Category extends React.Component {
   constructor(props) {
     super(props);
     const articles = elementsFromProps(props.posts);
@@ -43,7 +44,8 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchPosts('home');
+    const { category, fetchPosts } = this.props;
+    fetchPosts(category);
   }
 
   componentWillReceiveProps(newProps) {
@@ -99,7 +101,7 @@ class Home extends React.Component {
     return (
       <Page
         isFullpage={false}
-        isHome
+        isHome={false}
         pageTitle="Project"
         modal={modal}
         modalData={modalData}
@@ -117,5 +119,5 @@ class Home extends React.Component {
   }
 }
 
-Home.propTypes = HomePropTypes;
-export default UIHandler(Home);
+Category.propTypes = CategoryPropTypes;
+export default UIHandler(Category);

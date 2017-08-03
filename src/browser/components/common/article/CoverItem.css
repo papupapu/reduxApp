@@ -1,0 +1,239 @@
+.category .categoryTitle{
+	padding:0 0 .7rem;
+	font-weight:400; font-size:1.4rem; color:#F6A623; text-align:center;
+	background:#333;
+}
+
+.articleCoverItem{
+	position:relative;
+	margin-bottom:1rem; padding-top:calc((100vw * 259) / 345 - 50px);
+}
+
+.articleCoverItem .cover{
+	position:absolute;
+	top:0; left:0;
+	width:100%; height:calc((100vw * 259) / 345);
+	overflow:hidden;
+}
+
+.articleCoverItem .cover img{
+	position:absolute;
+	top:50%; left:50%;
+	width:100%; height:100%;
+	transform:translate(-50%, -50%);
+}
+
+.articleCoverItem .goFull{
+	position:absolute; z-index:2;
+	top:1rem; right:1rem;
+    padding: .2rem .4rem .1rem;
+}
+
+.articleCoverItem .goFull svg{
+	width:3rem; height:3rem;
+}
+
+.articleCoverItem header{
+	position:relative; z-index:1;
+	margin:0 1rem; padding:1.5rem 1rem 0;
+	background:#FFF; border:1px solid #E2E1E1; border-top-width:0; border-bottom-width:3px;	
+}
+
+.articleCoverItem header.casa{
+	padding:.5rem 1rem 1.5rem;		
+}
+
+.articleCoverItem p.infos{
+	margin-bottom:.3rem;
+	font-size:1.4rem; line-height:3.8rem; color:#787878; text-align:right;
+}
+
+.articleCoverItem p.infos strong{
+	float:left;
+	font-weight:700; font-size:1.8rem; color:#202020;
+}
+
+.articleCoverItem p.infos span{
+	font-weight:700; font-size:1.8rem; color:#202020;
+}
+
+.articleCoverItem .title{
+	margin-bottom:1rem;
+	font-size: 2.2rem; line-height:2.6rem; color:#333;	
+}
+
+.articleCoverItem .title a{
+	color:#333;	text-decoration:none;
+}
+
+.articleCoverItem .subtitle{
+	position: relative;
+	height:11.2rem;
+	font-size:1.6rem; font-weight:400; line-height:2.2rem; color:#323232;
+	background:#FFF;
+	overflow:hidden;		
+}
+
+.articleCoverItem .subtitle:before{
+	content:'...';
+	float: right; position:absolute;
+	bottom:.2rem; left:100%; 
+	margin-left: -7rem; padding-left:1.5rem;
+	width: 7rem; height:2.2rem;
+	color:#707070;
+	background: linear-gradient(to right, rgba(255, 255, 255, 0), white 1rem, white);
+}
+
+.articleCoverItem .subtitle a{
+	color:#202020;	text-decoration:none;
+}
+
+.articleCoverItem .casa .subtitle{
+	font:1.8rem/2.8rem 'Lato'; color:#666;			
+}
+
+.articleCoverItem .casa .subtitle a{
+	color:#666;	text-decoration:none;
+}
+
+.articleCoverItem .actions{
+	margin-top:1rem;
+}
+
+.articleCoverItem .actions p{
+	font-size:1.2rem; line-height:4.4rem; color:#202020;
+	border-top:1px solid #E2E1E1;
+	overflow:hidden;
+}
+
+.articleCoverItem .actions strong{
+	float:left;
+	padding-left:1.1rem;
+	font-weight:700; color:#404040;
+}
+
+.articleCoverItem .actions a,
+.articleCoverItem .actions span{
+	float:right;
+	color:#E2E1E1;
+}
+
+.articleCoverItem .actions a{
+	position:relative;
+	width:4.4rem; height:4.4rem;
+}
+
+.articleCoverItem .actions a svg{
+	position:absolute;
+	top:50%; left:50%;
+	width:25px; height:25px;
+	transform:translate(-50%,-50%);
+}
+
+.articleCoverItem .actions a svg.calendar{
+	width:22px; height:22px;
+}
+
+.articleCoverItem .actions a svg.baloon{
+	transform:translate(-50%,-45%);
+}
+
+.articleCoverItem .actions a svg path{
+	fill:#606060;
+}
+
+@media screen and (min-width: 375px) { /* iPhone 6 */
+
+	.articleCoverItem{
+		margin-bottom:1.5rem;
+	}
+
+	.articleCoverItem header{
+		margin-right:1.5rem; margin-left:1.5rem; padding:2rem 1.5rem 0;
+	}
+
+}
+
+@media screen and (min-width: 568px){ /* iPhone5 - landscape */
+
+	.articleCoverItem{
+		position:relative;
+	}	
+
+	.articleCoverItem .cover{
+		top:0;
+	}	
+
+	.articleCoverItem header{
+		margin:0 1rem;		
+	}
+
+}
+
+@media screen and (min-width: 569px) { /* ??? */
+
+	.articleCoverItem p.actions{
+		line-height:4rem;
+	}
+
+	.articleCoverItem .actions a{
+		width:4rem; height:4rem;
+	}
+
+	.articleCoverItem .actions span{
+		padding:0 1rem;
+	}
+
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	.articleCoverItem{
+		padding-top:calc((100vw * 259) / 345 - 100px);
+	}
+
+	.articleCoverItem header{
+		margin:0 1.5rem; padding:1.5rem 1.5rem 0;
+	}
+
+	.articleCoverItem .title{
+		margin-bottom:.5rem;
+		font-size: 2.6rem; line-height:3.2rem; color:#333;	
+	}
+
+	.articleCoverItem .subtitle:before{
+		content:''; display:none;
+	}	
+
+}
+
+@media screen and (min-width: 1024px) {
+
+	.articleCoverItem{
+		padding-top:calc(75vh - 150px);
+	}	
+
+	.articleCoverItem .cover{
+		position:absolute;
+		top:0; left:0;
+		width:100%; height:75vh;
+		overflow:hidden;
+	}
+
+	.articleCoverItem .cover img{
+		height:auto;
+	}
+
+	.articleCoverItem header{
+		margin:0 auto;
+		max-width:1140px;
+	}	
+}
+
+@media screen and (min-width: 950px) {
+
+	.articleCoverItem .actions a:hover svg path{
+		fill:#f90;
+	}	
+
+}

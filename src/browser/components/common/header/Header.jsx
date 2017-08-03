@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import Hamburger from '../icons/Hamburger';
 import Avatar from '../icons/Avatar';
 
+import { CATEGORIES } from '../../../../common/constants/Articles';
+
 import './Header.css';
 
 const HeaderPropTypes = {
@@ -13,6 +15,26 @@ const HeaderPropTypes = {
   pageTitle: PropTypes.string.isRequired,
   toggleSiteNavigation: PropTypes.func.isRequired,
   openModal: PropTypes.func.isRequired,
+};
+
+const categoriesList = (onClickAction) => {
+  const list = [];
+  CATEGORIES.forEach(
+    (el) => {
+      list.push(
+        <li key={`nav-${el.path}`}>
+          <NavLink
+            exact
+            onClick={onClickAction}
+            to={`/${el.path}`}
+          >
+            {el.label}
+          </NavLink>
+        </li>,
+      );
+    },
+  );
+  return list;
 };
 
 class Header extends React.Component {
@@ -30,6 +52,8 @@ class Header extends React.Component {
         <a href="/" title={this.props.pageTitle}>{this.props.pageTitle}</a>
       </div>
     );
+    const menu = categoriesList(this.props.toggleSiteNavigation);
+
     return (
       <header id="header">
         <div className="sw">
@@ -45,6 +69,7 @@ class Header extends React.Component {
                   Home
                 </NavLink>
               </li>
+              {menu}
               <li>
                 <NavLink
                   onClick={this.props.toggleSiteNavigation}

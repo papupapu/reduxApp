@@ -66,7 +66,7 @@ class FullGallery extends React.Component {
           <Page
             isFullpage
             isDetail={false}
-            pageTitle={`${post.heading.title} - ${category} - Papui`}
+            pageTitle={`${post.heading.title} - ${post.category} - Papui`}
             modal={modal}
             modalData={modalData}
             modalType={modalType}

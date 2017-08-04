@@ -94,11 +94,11 @@ class Category extends React.Component {
       modal,
       modalData,
       modalType,
-      posts,
       toggleSiteHiddenComponents,
 
       // view specific
       category,
+      posts,
     } = this.props;
 
     const mainArticle = posts.length > 0 ? this.mainArticle() : null;

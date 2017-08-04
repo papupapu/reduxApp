@@ -1,0 +1,152 @@
+.notFound{
+	position:relative; z-index:1;
+	width:100vw; height:calc(100vh - 150px);
+	background:#e0e0e0 url(/images/style/thedude.png) center bottom no-repeat;
+}
+
+.notFound p{
+	position:absolute;
+	width:calc(100% - 4rem);
+    font-weight: 700; font-family: 'PT Sans',Georgia;
+}
+
+.notFound p.first{
+	top:3.5rem; right:2rem;
+	font-size:1.6rem; text-align:right; color:#999;
+}
+
+.notFound p.second{
+	bottom:9rem; left:2rem; 
+	font-size:3rem; text-align:center; color:#676767;
+}
+
+.notFound p.third{
+	bottom:3.5rem; left:2rem; 
+	font-size:1.6rem; text-align:center; color:#444;
+}
+
+.notFound p.third a{
+	color:#D88600;
+}
+
+.notFound p.third a:hover{
+	color:#000;
+}
+
+@media screen and (min-width: 375px) { /* iPhone 6 */
+
+	.notFound{	
+		background-position:center 60%;
+	}
+
+	.notFound p.first{
+		top:8rem;
+		font-size:2rem;
+	}	
+
+	.notFound p.second{
+		bottom:13rem;
+	}	
+
+}
+
+@media screen and (min-width: 414px) { /* iPhone 6+ */
+
+	.notFound p.first{
+		top:9rem;
+	}	
+
+	.notFound p.second{
+		bottom:15rem;
+	}
+
+	.notFound p.third{
+		bottom:5rem;
+		font-size:2rem;
+	}	
+
+}
+
+@media screen and (min-width: 568px) and (max-width: 767px)  { /* iPhone5 - landscape */
+
+	.notFound{	
+		height:300px;
+		background-position:center center;
+		background-size:auto 250px;
+	}
+
+	.notFound > div{
+		position:absolute;
+		top:50%; left:50%;
+		width:100%; height:300px;
+		transform:translate(-50%, -50%);
+	}	
+
+	.notFound p.first{
+		top:2rem;
+	}	
+
+	.notFound p.second{
+		bottom:9rem;
+	}
+
+	.notFound p.third{
+		bottom:4rem;
+	}		
+
+}
+
+@media screen and (min-width: 569px) {
+
+	.notFound{
+		height:calc(100vh - 150px);
+	}
+
+}
+
+@media screen and (min-width: 768px) { /* iPad */
+
+	.notFound{	
+		background-position:center center;
+	}
+
+	.notFound p.first{
+		top:18rem;
+	}	
+
+	.notFound p.second{
+		bottom:24rem;
+	}
+
+	.notFound p.third{
+		bottom:18rem;
+	}	
+
+}
+
+@media screen and (min-width: 950px) { /* Desk */
+
+	.notFound{
+		min-height:600px;
+	}
+
+	.notFound > div{
+		position:absolute;
+		top:50%; left:50%;
+		width:800px; height:600px;
+		transform:translate(-50%, -50%);
+	}
+
+	.notFound p.first{
+		top:9rem;
+	}	
+
+	.notFound p.second{
+		bottom:14rem;
+	}
+
+	.notFound p.third{
+		bottom:5rem;
+	}	
+
+}

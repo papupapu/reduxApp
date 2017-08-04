@@ -1,7 +1,7 @@
 .channelpicker{
   margin-bottom:2.5rem;
-  font-size:1.4rem; line-height:5rem; color:#f0f0f0;
-  background:#333;
+  font-size:1.4rem; line-height:5rem; color:#a0a0a0;
+  background:#404040;
   overflow:hidden;
 }
 
@@ -18,19 +18,11 @@
 }
 
 .channelpicker p span{
-  position:relative;
-  color:#f90;
-}
-
-.channelpicker p span:after{
-  content:'';
-  position:absolute; bottom:0; left:0;
-  width:100%; height:.2rem;
-  background:#f90;
+  background:#606060;
 }
 
 .channelpicker p a{
-  color:#f0f0f0; text-decoration:none;
+  color:#606060; text-decoration:none;
 }
 
 .channelpicker p a:hover{
@@ -58,7 +50,7 @@
 
 .channelpicker .fakeform button{
   width:6rem; height:3rem;
-  font-weight:700; font-size:1.2rem; line-height:3rem; text-transform:uppercase;
+  font-weight:700; font-size:1.2rem; line-height:3rem; color:#FFF; text-transform:uppercase;
   background:#f90; border:0 none; border-radius:5px;
 }
 

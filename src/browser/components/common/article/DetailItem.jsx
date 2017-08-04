@@ -158,7 +158,7 @@ class DetailItem extends React.Component {
     if (closingMediaFlag && detailBodyClosingMedia.length > 1) {
       const mediaMinusFirst = CorrectMediaSizes(device, category, detailBodyClosingMedia.splice(1));
       if (mediaMinusFirst.length > 1) {
-        const fullGalleryUrl = `/gallery/${id}`;
+        const fullGalleryUrl = `/gallery/${category}/${id}`;
         detailBody.push(
           <div key="closingMedia" className="media closing">
             <Gallery media={mediaMinusFirst} slidesLinkTo={fullGalleryUrl} cssClassName={'mediael'} device={device} viewport={viewport} />

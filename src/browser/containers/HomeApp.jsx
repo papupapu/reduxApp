@@ -4,7 +4,7 @@ import { fetchPostsIfNeeded } from '../../common/redux/actions/Home';
 
 import Home from '../components/home/Home';
 
-const mapStateToProps = (state, { match }) => {
+const mapStateToProps = (state) => {
   const {
     postsByCategory,
   } = state;

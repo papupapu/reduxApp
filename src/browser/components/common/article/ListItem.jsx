@@ -131,7 +131,7 @@ class ListItem extends React.Component {
     }
     if (media.length > 0) {
       const readyForResponsive = CorrectMediaSizes('smartphone', category, media);
-      const galleryIco = readyForResponsive.length > 1 ? <Link className="goFull" to={`/gallery/${id}`}><StarIcon /></Link> : null;
+      const galleryIco = readyForResponsive.length > 1 ? <Link className="goFull" to={`/gallery/${category}/${id}`}><StarIcon /></Link> : null;
       output = <div className="media"><Link to={detailUrl}><Image src={readyForResponsive[0].src} cssClassName={'mediael'} alt={title} /></Link>{galleryIco}</div>;
     }
     return output;

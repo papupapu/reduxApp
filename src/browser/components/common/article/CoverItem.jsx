@@ -138,7 +138,7 @@ class CoverItem extends React.Component {
     const detailUrl = `/${category}/${id}`;
     const css = Object.keys(infos).length > 0 ? 'casa' : null;
     const coverImage = this.addCoverImage();
-    const galleryIco = media.length > 1 ? <Link className="goFull" to={`/gallery/${id}`}><StarIcon /></Link> : null;
+    const galleryIco = media.length > 1 ? <Link className="goFull" to={`/gallery/${category}/${id}`}><StarIcon /></Link> : null;
     const actions = (
       <div className="actions">
         <p>

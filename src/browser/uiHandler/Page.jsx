@@ -32,7 +32,7 @@ const Page = (
   let code;
   if (isFullpage) {
     code = (
-      <div className="root">
+      <div>
         {children}
         {
           modal &&

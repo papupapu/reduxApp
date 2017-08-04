@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router';
 import HomeApp from './containers/HomeApp';
 import CategoryApp from './containers/CategoryApp';
 import DetailApp from './containers/DetailApp';
+import GalleryApp from './containers/GalleryApp';
 import FeedApp from './containers/FeedApp';
 import NotFound from './components/notFound/NotFound';
 
@@ -32,6 +33,7 @@ const AppRouter = () => (
   <Router>
     <Switch>
       <Route exact path="/" component={HomeApp} />
+      <Route path="/gallery/:category/:id" component={GalleryApp} />
       {categoryRoutes}
       <Route path="/:category/:id" component={DetailApp} />
       <Route path="/reddit" component={FeedApp} />

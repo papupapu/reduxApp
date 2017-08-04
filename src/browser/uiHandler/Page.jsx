@@ -53,7 +53,7 @@ const Page = (
     );
   } else {
     code = (
-      <div className="root full_header">
+      <div className={pageTitle === '404 - Papui' ? 'root notFoundPage full_header' : 'root full_header'}>
         <Header
           isDetail={isDetail}
           pageTitle={pageTitle}

@@ -155,6 +155,10 @@ html, body{
 	padding-bottom:27.5rem;	/* footer height */
 }
 
+.root.notFoundPage{
+	padding-bottom:24.5rem;
+}
+
 .sw{
 	margin:0 auto;
 	max-width:1140px;

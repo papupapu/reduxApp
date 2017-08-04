@@ -8,6 +8,7 @@ import Page from '../../uiHandler/Page';
 import NotFound from '../notFound/NotFound';
 
 import Article from '../common/article/Article';
+import List from '../common/listing/Listing';
 
 const DetailPropTypes = {
   // ui specific
@@ -19,9 +20,11 @@ const DetailPropTypes = {
   toggleSiteHiddenComponents: PropTypes.func.isRequired,
 
   // view specific
+  shouldFetch: PropTypes.bool.isRequired,
   category: PropTypes.string.isRequired,
   post: PropTypes.instanceOf(Object).isRequired,
-  shouldFetch: PropTypes.bool.isRequired,
+  postId: PropTypes.string.isRequired,
+  categoryPosts: PropTypes.instanceOf(Array).isRequired,
   notFound: PropTypes.bool.isRequired,
   fetchPosts: PropTypes.func.isRequired,
 };
@@ -39,6 +42,12 @@ class Detail extends React.Component {
     window.scrollTo(0, 0);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.postId !== this.props.postId) {
+      window.scrollTo(0, 0);
+    }
+  }
+
   render() {
     const {
       // ui specific
@@ -50,8 +59,10 @@ class Detail extends React.Component {
       toggleSiteHiddenComponents,
 
       // view specific
-      post,
       shouldFetch,
+      category,
+      post,
+      categoryPosts,
       notFound,
     } = this.props;
 
@@ -64,7 +75,7 @@ class Detail extends React.Component {
           <Page
             isFullpage={false}
             isDetail
-            pageTitle={`${post.heading.title} - Papui`}
+            pageTitle={`${post.heading.title} - ${category} - Papui`}
             modal={modal}
             modalData={modalData}
             modalType={modalType}
@@ -78,6 +89,21 @@ class Detail extends React.Component {
                 device={device}
                 viewport={viewport}
               />
+              {
+                categoryPosts && categoryPosts.length > 0 &&
+                  <section className="sw related">
+                    <h3><strong>{category}</strong> more articles you may like</h3>
+                    <List
+                      titleTag="h3"
+                      device={device}
+                      viewport={viewport}
+                      maxToShow={5}
+                      list={categoryPosts}
+                      contentType={'articles'}
+                      openModal={toggleSiteHiddenComponents}
+                    />
+                  </section>
+              }
             </div>
           </Page>
         );

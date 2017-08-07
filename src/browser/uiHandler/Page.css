@@ -80,7 +80,7 @@ table {
 	FONTS
 */
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Roboto:300,400');
 
 /*
 	TYPOGRAPHY
@@ -91,7 +91,7 @@ html{
 }
 
 html, body{
-	font-family:'Roboto', sans-serif;
+	font-family:'Open Sans', sans-serif;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 	-webkit-font-smoothing: antialiased;
@@ -99,7 +99,7 @@ html, body{
 }
 
 h1, h2, h3, h4, h5, h6{
-	font-weight:700; 
+	font-weight:300; font-family:'Roboto', sans-serif;
 }
 
 p, blockquote, pre,
@@ -114,7 +114,7 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time{
-	font-family:'Roboto', sans-serif;
+	font-family:'Open Sans', sans-serif;
 }
 
 strong, b{

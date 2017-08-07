@@ -1,7 +1,7 @@
 .articleListItem{
 	position:relative; z-index:1;
-	margin:1rem 0; padding:72.5% 1rem .2rem;
-	background:#FFF; border:1px solid #E2E1E1; border-bottom-width:3px;
+	margin:1rem 0; padding:70% 1rem .2rem;
+	background:#FFF; border-bottom:2px solid #E2E1E1;
 }
 
 .articleListItem a{
@@ -13,8 +13,8 @@
 }
 
 .articleListItem .title{
-	margin-bottom:.7rem;
-	font-size:2.2rem; line-height:2.6rem; color:#333;
+	margin-top:1.4rem; margin-bottom:.8rem;
+	font-size:2.4rem; line-height:3.2rem; color:#333;
 }
 
 .articleListItem .title a{
@@ -24,7 +24,7 @@
 .articleListItem .subtitle{
 	position: relative;
 	height:11.2rem;
-	font-size:1.6rem; font-weight:400; line-height:2.2rem; color:#323232;
+	font-weight:300; font-size:1.6rem; line-height:2.2rem; font-family:'Open Sans', sans-serif; color:#323232;
 	background:#FFF;
 	overflow:hidden;
 }
@@ -63,7 +63,7 @@
 }
 
 .articleListItem .actions{
-	margin-top:1rem;
+	margin-top:1.2rem;
 }
 
 .articleListItem .actions p{
@@ -111,7 +111,7 @@
 .articleListItem .media{
 	position:absolute; z-index:2;
 	top:0;left:0;
-	width:100%;
+	width:100%; height:calc((100vw - 2rem) / 1.43);
 	background:url(/images/style/default-thumb.png) center center no-repeat; background-size:cover;
 }
 
@@ -140,7 +140,7 @@
 @media screen and (min-width: 321px) { /* iPhone 6 */
 
 	.articleListItem{
-		margin:1.5rem 0; padding:72.5% 1.5rem .2rem;		
+		margin:1.5rem 0; padding:70% 1.5rem .2rem;		
 	}	
 
 }

@@ -59,7 +59,7 @@ class CoverItem extends React.Component {
 
   componentDidMount() {
     this.checkViewport();
-    this.article.querySelector('.cover').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+    this.article.querySelector('.cover').style.height = ''; // `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -76,14 +76,14 @@ class CoverItem extends React.Component {
         look for a media query solutions to keep layout measures computing separated from APP logic
       */
       if (nextProps.viewport.width <= '568') {
-        this.article.querySelector('.cover').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+        this.article.querySelector('.cover').style.height = ''; // `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
       } else {
         this.article.querySelector('.cover').style.height = '';
       }
       return true;
     } else if (isInViewport) {
       if (nextProps.viewport.width <= '568') {
-        this.article.querySelector('.cover').style.height = `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
+        this.article.querySelector('.cover').style.height = ''; // `${Math.floor((70 * this.article.offsetWidth) / 100)}px`;
       } else {
         this.article.querySelector('.cover').style.height = '';
       }

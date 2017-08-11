@@ -1,5 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
+import { API_URLS } from '../../constants/Settings';
+
+const api = document.location.hostname === 'localhost' ? API_URLS.local : API_URLS.prod;
+
 /* actions types */
 
 export const FETCH_MAP_REQUEST = 'FETCH_MAP_REQUEST';
@@ -23,7 +27,7 @@ function fetchMapSuccess(json) {
 function fetchMap() {
   return (dispatch) => {
     dispatch(fetchMapRequest());
-    return fetch('http://localhost:8888/mappa_dati.json')
+    return fetch(`${api}mappa_dati.json`)
       .then(
         response => response.json(),
         error => console.log('error in fetch', error),

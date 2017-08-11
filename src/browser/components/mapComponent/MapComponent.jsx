@@ -180,8 +180,8 @@ class MapComponent extends React.Component {
   onClusterClick(cluster) {
     const markers = cluster.getMarkers();
     markers.forEach(
-      marker => console.log(marker.title)
-    ),
+      marker => console.log(marker.title),
+    );
   }
 
   render() {

@@ -12,3 +12,9 @@ export const FEED_CHANNELS = [
   'reactjs',
   'funny',
 ];
+
+export const API_URLS = {
+  local: 'http://localhost:8888/',
+  prod: 'http://papu.cloudno.de/',
+};
+

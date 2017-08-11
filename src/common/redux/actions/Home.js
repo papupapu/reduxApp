@@ -1,5 +1,9 @@
 import fetch from 'isomorphic-fetch';
 
+import { API_URLS } from '../../constants/Settings';
+
+const api = document.location.hostname === 'localhost' ? API_URLS.local : API_URLS.prod;
+
 /* actions types */
 
 export const FETCH_POSTS_REQUEST = 'FETCH_POSTS_REQUEST';
@@ -25,7 +29,7 @@ function fetchPostsSuccess(category, json) {
 function fetchPosts(category) {
   return (dispatch) => {
     dispatch(fetchPostsRequest(category));
-    return fetch(`http://localhost:8888/${category}.json`)
+    return fetch(`${api}${category}.json`)
       .then(
         response => response.json(),
         error => console.log('error in fetch', error),

@@ -145,24 +145,20 @@ class ListItem extends React.Component {
     const actions = (
       <div className="actions">
         <p>
-          <strong>sonolameglioagenzia</strong>
-          <a
-            href=""
-            className="modal_handle"
-            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
-          >
-            <StarIcon />
-          </a>
-          <span>|</span>
-          <a
-            href=""
-            data-action="sendMail"
-            className="modal_handle"
-            onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
-          >
-            <StarIcon />
-          </a>
+          <img src="/images/homer.jpg" alt="Homer Simpson" />
+          <strong>
+            Homer Simpson
+            <em>7 agosto 2017</em>
+          </strong>
         </p>
+        <a
+          href=""
+          data-action="sendMail"
+          className="modal_handle"
+          onClick={(evt) => { evt.preventDefault(); openModal(evt, { title, subtitle }); }}
+        >
+          <StarIcon />
+        </a>
       </div>
       );
     return (

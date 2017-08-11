@@ -33,10 +33,14 @@
 	width:3rem; height:3rem;
 }
 
+.articleCoverItem .goFull svg path{
+	fill:transparent;
+}
+
 .articleCoverItem header{
 	position:relative; z-index:1;
 	margin:0 .8rem; padding:1.4rem 1rem 0;
-	background:#FFF; border-bottom:1px solid #E2E1E1;
+	background:#FFF;
 }
 
 .articleCoverItem header.casa{
@@ -50,7 +54,7 @@
 
 .articleCoverItem p.infos strong{
 	float:left;
-	font-weight:700; font-size:1.8rem; color:#202020;
+	font-weight:300; font-size:1.8rem; color:#202020;
 }
 
 .articleCoverItem p.infos span{
@@ -69,7 +73,7 @@
 .articleCoverItem .subtitle{
 	position: relative;
 	height:11.2rem;
-	font-weight:300; font-size:1.6rem; line-height:2.2rem; font-family:'Open Sans', sans-serif; color:#323232;
+	font-weight:300; font-size:1.6rem; line-height:2.2rem; font-family:'Open Sans', sans-serif; color:#707070;
 	background:#FFF;
 	overflow:hidden;		
 }
@@ -85,7 +89,7 @@
 }
 
 .articleCoverItem .subtitle a{
-	color:#202020;	text-decoration:none;
+	color:#707070;	text-decoration:none;
 }
 
 .articleCoverItem .casa .subtitle{
@@ -98,23 +102,37 @@
 
 .articleCoverItem .actions{
 	margin-top:1.3rem;
-}
-
-.articleCoverItem .actions p{
-	font-size:1.2rem; line-height:4.4rem; color:#202020;
 	border-top:1px solid #E2E1E1;
 	overflow:hidden;
 }
 
+.articleCoverItem .actions p{
+	float:left;
+	font-size:1.2rem; line-height:4.4rem; color:#202020;
+}
+
+.articleCoverItem .actions p img{
+	float:left;
+	margin:.5rem 1rem 0 0;
+	width:3.4rem;
+	border-radius:50%;
+}
+
 .articleCoverItem .actions strong{
 	float:left;
-	padding-left:1.1rem;
-	font-weight:700; color:#404040;
+	margin-top:.8rem;
+	font-weight:300; line-height:normal; color:#333;
+}
+
+.articleCoverItem .actions strong em{
+	display:block;
+	font-style:normal; color:#999;
 }
 
 .articleCoverItem .actions a,
 .articleCoverItem .actions span{
 	float:right;
+	line-height:4.4rem;
 	color:#E2E1E1;
 }
 
@@ -125,9 +143,9 @@
 
 .articleCoverItem .actions a svg{
 	position:absolute;
-	top:50%; left:50%;
+	top:50%; right:0;
 	width:25px; height:25px;
-	transform:translate(-50%,-50%);
+	transform:translate(0,-50%);
 }
 
 .articleCoverItem .actions a svg.calendar{
@@ -138,10 +156,6 @@
 	transform:translate(-50%,-45%);
 }
 
-.articleCoverItem .actions a svg path{
-	fill:#606060;
-}
-
 @media screen and (min-width: 375px) { /* iPhone 6 */
 
 	.articleCoverItem{
@@ -149,7 +163,7 @@
 	}
 
 	.articleCoverItem header{
-		margin-right:1.5rem; margin-left:1.5rem; padding:1.4rem 1.5rem 0;
+		padding:1.4rem 1.5rem 0;
 	}
 
 }

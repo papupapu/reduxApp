@@ -7,6 +7,7 @@ import CategoryApp from './containers/CategoryApp';
 import DetailApp from './containers/DetailApp';
 import GalleryApp from './containers/GalleryApp';
 import FeedApp from './containers/FeedApp';
+import MapApp from './containers/MapApp';
 import NotFound from './components/notFound/NotFound';
 
 import { CATEGORIES } from '../common/constants/Articles';
@@ -37,6 +38,7 @@ const AppRouter = () => (
       {categoryRoutes}
       <Route path="/:category/:id" component={DetailApp} />
       <Route path="/reddit" component={FeedApp} />
+      <Route path="/map" component={MapApp} />
       <Route component={NotFound} />
     </Switch>
   </Router>

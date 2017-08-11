@@ -13,6 +13,7 @@ module.exports = {
 
 	entry: {
 		app: './browser/index.jsx',
+		ui: './browser/uiHandler/UIHandler.jsx',
 	},
 
 	output: {

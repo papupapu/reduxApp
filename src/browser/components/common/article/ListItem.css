@@ -1,7 +1,7 @@
 .articleListItem{
 	position:relative; z-index:1;
 	margin:1rem 0; padding:70% 1rem .2rem;
-	background:#FFF; border-bottom:2px solid #E2E1E1;
+	background:#FFF;
 }
 
 .articleListItem a{
@@ -23,8 +23,8 @@
 
 .articleListItem .subtitle{
 	position: relative;
-	height:11.2rem;
-	font-weight:300; font-size:1.6rem; line-height:2.2rem; font-family:'Open Sans', sans-serif; color:#323232;
+	height:11rem;
+	font-weight:300; font-size:1.6rem; line-height:2.2rem; font-family:'Open Sans', sans-serif; color:#707070;
 	background:#FFF;
 	overflow:hidden;
 }
@@ -32,7 +32,7 @@
 .articleListItem .subtitle:before{
 	content:'...';
 	float: right; position:absolute;
-	bottom:.2rem; left:100%; 
+	bottom:0; left:100%; 
 	margin-left: -7rem; padding-left:1.5rem;
 	width: 7rem; height:2.2rem;
 	color:#707070;
@@ -40,7 +40,7 @@
 }
 
 .articleListItem .subtitle a{
-	color:#323232;
+	color:#707070;
 }
 
 .articleListItem .casa h4,
@@ -63,24 +63,38 @@
 }
 
 .articleListItem .actions{
-	margin-top:1.2rem;
-}
-
-.articleListItem .actions p{
-	font-size:1.2rem; line-height:4.4rem; color:#202020;
+	margin-top:1.3rem;
 	border-top:1px solid #E2E1E1;
 	overflow:hidden;
 }
 
+.articleListItem .actions p{
+	float:left;
+	font-size:1.2rem; line-height:4.4rem; color:#202020;
+}
+
+.articleListItem .actions p img{
+	float:left;
+	margin:.5rem 1rem 0 0;
+	width:3.4rem;
+	border-radius:50%;
+}
+
 .articleListItem .actions strong{
 	float:left;
-	padding-left:1.1rem;
-	font-weight:700; color:#404040;
+	margin-top:.8rem;
+	font-weight:300; line-height:normal; color:#333;
+}
+
+.articleListItem .actions strong em{
+	display:block;
+	font-style:normal; color:#999;
 }
 
 .articleListItem .actions a,
 .articleListItem .actions span{
 	float:right;
+	line-height:4.4rem;
 	color:#E2E1E1;
 }
 
@@ -91,21 +105,9 @@
 
 .articleListItem .actions a svg{
 	position:absolute;
-	top:50%; left:50%;
+	top:50%; right:0;
 	width:25px; height:25px;
-	transform:translate(-50%,-50%);
-}
-
-.articleListItem .actions a svg.calendar{
-	width:22px; height:22px;
-}
-
-.articleListItem .actions a svg.baloon{
-	transform:translate(-50%,-45%);
-}
-
-.articleListItem .actions a svg path{
-	fill:#606060;
+	transform:translate(0,-50%);
 }
 
 .articleListItem .media{
@@ -135,6 +137,10 @@
 
 .articleListItem .goFull svg{
 	width:3rem; height:3rem;
+}
+
+.articleListItem .goFull svg path{
+	fill:transparent;
 }
 
 @media screen and (min-width: 321px) { /* iPhone 6 */

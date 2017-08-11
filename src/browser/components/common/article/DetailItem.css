@@ -46,11 +46,11 @@
 }
 
 .articleDetailItem h2{
-	font:2rem/2.6rem 'Lato'; color:#202020;			
+	font-size:1.8rem; line-height:2.6rem; font-family:'Open Sans'; color:#202020;
 }
 
 .articleDetailItem .casa h2{
-	font:1.8rem/2.8rem 'Lato'; color:#666;			
+	font:1.8rem/2.8rem 'Open Sans'; color:#666;
 }
 
 .articleDetailItem p.actions{
@@ -104,24 +104,25 @@
 
 .articleDetailItem p.dbp{
 	padding:1rem 1rem .5rem;
-	font-size:1.8rem; line-height:2.8rem; color:#333;
+	font-weight:300; font-size:1.6rem; line-height:2.6rem; color:#333;
 	background:#FFF;
 }
 
 .articleDetailItem blockquote.dbp{
 	padding:2.5rem;
-	font-style:italic; font-weight:700; font-size:2.2rem; line-height:3.3rem; color:#808080;
+	font-style:italic; font-weight:400; font-size:2.2rem; line-height:3.3rem; color:#808080;
 	background:#FFF;
 }
 
 .articleDetailItem blockquote.dbp span{
 	display:block;
-	font-style:normal; font-size:1.4rem; line-height:normal; color:#555; text-align:right;
+	margin-top:1rem;
+	font-style:normal; font-size:1.2rem; line-height:normal; color:#555; text-align:right;
 }
 
 .articleDetailItem ul.dbp{
 	padding:1rem 1rem .5rem;
-	font-size:1.8rem; line-height:2.8rem;
+	font-weight:300; font-size:1.6rem; line-height:2.8rem;
 	background:#FFF;
 }
 
@@ -176,12 +177,12 @@
 
 .sw.related > h3{
 	padding:3rem 0 1rem;
-	font-size:1.8rem; font-weight: 400; line-height:3.2rem; text-align:center;
+	font-weight:300; font-size:1.8rem; line-height:3.2rem; color:#404040; text-align:center;
 }
 
 .sw.related > h3 strong{
 	display:block;
-	font-style:italic; font-size:2.4rem; 
+	font-style:italic; font-size:2.4rem; color:#202020;
 }
 
 @media screen and (min-width: 375px) { /* iPhone 6 */

@@ -102,7 +102,7 @@ class DetailItem extends React.Component {
       (el, index) => {
         const n = index + 1;
         const listItem = el.value.label ?
-          <li key={`${el.type}-${ul.value}-${n}`}><span>{el.value.label}</span> {el.value.value}</li>
+          <li key={`${el.type}-${ul.value}-${n}`}><span>{el.value.label}:</span> {el.value.value}</li>
         :
           <li key={`${el.type}-${ul.value}-${n}`}>{el.value}</li>;
         list.push(listItem);

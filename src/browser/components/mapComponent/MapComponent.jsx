@@ -5,15 +5,18 @@ import {
   withGoogleMap,
   GoogleMap,
   Marker,
-  InfoWindow,
 } from 'react-google-maps';
 import { default as MarkerClusterer } from 'react-google-maps/lib/addons/MarkerClusterer';
+import { default as InfoBox } from 'react-google-maps/lib/addons/InfoBox';
 
 import UIHandler from '../../uiHandler/UIHandler';
 import Page from '../../uiHandler/Page';
 
+import './MapComponent.css';
+
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
+    ref={props.onMapMounted}
     defaultZoom={props.zoom}
     defaultCenter={props.coords}
   >
@@ -27,18 +30,58 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
           key={index}
           title={marker.title}
           position={marker.position}
-          onClick={() => { props.onMarkerClick(marker); }}
-        >
-          {marker.showInfo && (
-            <InfoWindow onCloseClick={() => { props.onCloseClick(marker); }}>
-              <div>{marker.infoContent}</div>
-            </InfoWindow>
-          )}
-        </Marker>
+          onClick={(e) => { props.onMarkerClick(e, marker); }}
+        />
       ))}
     </MarkerClusterer>
+    {
+      props.infoBoxData !== null &&
+        <InfoBox
+          position={props.infoBoxData.markerPosition}
+          onCloseClick={() => { props.onCloseClick(); }}
+          options={{ closeBoxMargin: '10px', disableAutoPan: true, boxClass: props.infoBoxData.boxClass }}
+        >
+          {props.infoBoxData.content}
+        </InfoBox>
+    }
   </GoogleMap>
 ));
+
+function fromLatLngToPixel(map, position) {
+  var scale = Math.pow(2, map.getZoom());
+  var proj = map.getProjection();
+  var bounds = map.getBounds();
+
+  var nw = proj.fromLatLngToPoint(
+    new google.maps.LatLng(
+      bounds.getNorthEast().lat(),
+      bounds.getSouthWest().lng()
+    ));
+  var point = proj.fromLatLngToPoint(position);
+
+  return new google.maps.Point(
+    Math.floor((point.x - nw.x) * scale),
+    Math.floor((point.y - nw.y) * scale)
+  );
+}
+
+function fromPixelToLatLng(map, pixel) {
+  var scale = Math.pow(2, map.getZoom());
+  var proj = map.getProjection();
+  var bounds = map.getBounds();
+
+  var nw = proj.fromLatLngToPoint(
+    new google.maps.LatLng(
+      bounds.getNorthEast().lat(),
+      bounds.getSouthWest().lng()
+    ));
+  var point = new google.maps.Point();
+
+  point.x = pixel.x / scale + nw.x;
+  point.y = pixel.y / scale + nw.y;
+
+  return proj.fromPointToLatLng(point);
+}
 
 function createBBox(items, mapWidth, mapHeight, buffer = 25) {
   let minLat = 85;
@@ -73,7 +116,6 @@ function createBBox(items, mapWidth, mapHeight, buffer = 25) {
 
   //use the most zoomed out of the two zoom levels
   const zoomLevel = (zoom1 < zoom2) ? zoom1 : zoom2;
-  
   return { lat: (minLat + maxLat) / 2, lon: (minLon + maxLon) / 2, zoom: Math.ceil(zoomLevel) };
 }
 
@@ -88,6 +130,7 @@ const MapComponentPropTypes = {
   // view specific
   items: PropTypes.instanceOf(Array).isRequired,
   fetchMap: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 class MapComponent extends React.Component {
@@ -95,10 +138,12 @@ class MapComponent extends React.Component {
     super(props);
     this.state = {
       markers: [],
+      infoBoxData: null,
     };
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
     this.handleCloseClick = this.handleCloseClick.bind(this);
     this.onClusterClick = this.onClusterClick.bind(this);
+    this.handleMapMounted = this.handleMapMounted.bind(this);
   }
   componentWillMount() {
     const { fetchMap } = this.props;
@@ -131,7 +176,30 @@ class MapComponent extends React.Component {
                 lng: el.property.address.location.longitude,
               },
               showInfo: false,
-              infoContent: (<p>{el.id} - {el.property.address.streetAddress}</p>),
+              infoContent: (
+                <div className="casaitem">
+                  <h1>{el.property.address.streetAddress}</h1>
+                  <p className="infos">
+                    <strong>{el.price.display}</strong>
+                    {
+                      el.property.features.general.landsize &&
+                      <span>
+                        {el.property.features.general.landsize.value}{' '}
+                        <span className="label">mq</span>
+                      </span>
+                    }
+                    {
+                      el.property.features.general.rooms &&
+                        <span>
+                          {' '}|{' '}
+                          {el.property.features.general.rooms.value}{' '}
+                          <span className="label">locali</span>
+                        </span>
+                    }
+                  </p>
+                  <img className="pic" src={`${el.property.media._meta.server}/360x265${el.property.media.gallery[0].uri}`} alt={el.property.address.streetAddress} />
+                </div>
+              ),
             }
           ),
         );
@@ -143,38 +211,47 @@ class MapComponent extends React.Component {
     }
   }
 
-  handleMarkerClick(targetMarker) {
-    this.setState({
-      markers: this.state.markers.map((marker) => {
-        if (marker === targetMarker) {
-          return Object.assign(
-            {},
-            marker,
-            {
-              showInfo: true,
-            },
-          );
-        }
-        return marker;
-      }),
-    });
+  handleMarkerClick(event, targetMarker) {
+    const mapElementSize = document.querySelector('#map_holder').getBoundingClientRect();
+    const markerPxPosition = fromLatLngToPixel(this._map, event.latLng);
+    const infoBoxCorrectPxPosition = { x: markerPxPosition.x - 195, y: markerPxPosition.y - 395 };
+
+    let boxClass = 'infoBox';
+
+    if (markerPxPosition.x + 195 > mapElementSize.right) {
+      infoBoxCorrectPxPosition.x = markerPxPosition.x - 410;
+      infoBoxCorrectPxPosition.y = markerPxPosition.y - 203;
+      boxClass = 'infoBox arrow-right';
+    }
+
+    if (markerPxPosition.x - 195 < 0) {
+      infoBoxCorrectPxPosition.x = markerPxPosition.x + 30;
+      infoBoxCorrectPxPosition.y = markerPxPosition.y - 203;
+      boxClass = 'infoBox arrow-left';
+    }
+
+    if (markerPxPosition.y - 395 < 0) {
+      if (boxClass.indexOf('right') > -1) {
+        infoBoxCorrectPxPosition.x = markerPxPosition.x - 395;
+        infoBoxCorrectPxPosition.y = markerPxPosition.y - 15;
+      } else if (boxClass.indexOf('left') > -1) {
+        infoBoxCorrectPxPosition.x = markerPxPosition.x + 15;
+        infoBoxCorrectPxPosition.y = markerPxPosition.y - 15;
+      } else {
+        infoBoxCorrectPxPosition.y = markerPxPosition.y + 20;
+        boxClass = 'infoBox arrow-up';
+      }
+    }
+
+    const coords = fromPixelToLatLng(this._map, { x: infoBoxCorrectPxPosition.x, y: infoBoxCorrectPxPosition.y });
+    
+    const markerPosition = new google.maps.LatLng({ lat: coords.lat(), lng: coords.lng() });
+    
+    this.setState({ infoBoxData: { content: targetMarker.infoContent, markerPosition, boxClass } });
   }
 
-  handleCloseClick(targetMarker) {
-    this.setState({
-      markers: this.state.markers.map((marker) => {
-        if (marker === targetMarker) {
-          return Object.assign(
-            {},
-            marker,
-            {
-              showInfo: false,
-            },
-          );
-        }
-        return marker;
-      }),
-    });
+  handleCloseClick() {
+    this.setState({ infoBoxData: null });
   }
 
   onClusterClick(cluster) {
@@ -182,6 +259,10 @@ class MapComponent extends React.Component {
     markers.forEach(
       marker => console.log(marker.title),
     );
+  }
+
+  handleMapMounted(map) {
+    this._map = map;
   }
 
   render() {
@@ -195,7 +276,7 @@ class MapComponent extends React.Component {
 
     return (
       <Page
-        isFullpage={true}
+        isFullpage
         isDetail={false}
         pageTitle="Papui"
         modal={modal}
@@ -203,10 +284,11 @@ class MapComponent extends React.Component {
         modalType={modalType}
         toggleSiteHiddenComponents={toggleSiteHiddenComponents}
       >
-        <div style={{ width: '100vw', height: '100vh' }}>
+        <div id="map_holder" style={{ width: '100vw', height: '100vh' }}>
           {
             !this.props.isFetching &&
               <GettingStartedGoogleMap
+                onMapMounted={this.handleMapMounted}
                 containerElement={
                   <div style={{ height: '100%' }} />
                 }
@@ -219,6 +301,7 @@ class MapComponent extends React.Component {
                 onMarkerClick={this.handleMarkerClick}
                 onCloseClick={this.handleCloseClick}
                 onClusterClick={this.onClusterClick}
+                infoBoxData={this.state.infoBoxData}
               />
           }
         </div>

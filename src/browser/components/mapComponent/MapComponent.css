@@ -1,5 +1,50 @@
+.casamap{
+  display:flex;
+}
+
+#list_holder{
+  width:300px; max-height:100vh;
+  background:#FFF;
+  overflow:hidden;
+}
+
+#list_holder ul{
+  width:300px; max-height:100vh;
+  overflow-y:auto;
+}
+
+/* 
+  Tricky
+  Override GMAPS default styles
+*/
+
+.gm-style > div > div:nth-child(4) > div:last-child > div > div{
+  border-radius:0;
+}
+
+.gm-style > div > div:nth-child(4) > div:last-child > div > div > div {
+  border:0 none !important;
+}
+
+.gm-style > div > div:nth-child(4) > div:last-child > div > div > div:nth-child(2) {
+  display:none;
+}
+
+.gm-style > div > div:nth-child(4) > div:last-child > div > div > div:nth-child(3) {
+  display:none;
+}
+/* 
+*  
+*/
+
 .casaitem{
   padding:1rem;
+  width:38rem; height:34rem;
+  background:#FFF;
+}
+
+.casaitem.window{
+  padding:0;
   width:38rem;
   background:#FFF;
 }
@@ -29,6 +74,56 @@
   width:36rem; height:26.5rem;
 }
 
+.casaitem .scrollingContCont{
+  position:absolute;
+  top:21px; left:0;
+  width:100%; height:30rem;
+  border-bottom:1px solid #e1e1e1;  
+}
+
+.casaitem .scrollingCont{
+  width:100%; 
+}
+
+.casaitem ul{
+  max-height:30rem;
+  overflow: scroll;
+  width:100%;
+  border:1px solid #e1e1e1; border-bottom:0 none;
+}
+
+.casaitem li,
+#list_holder li{
+  position:relative;
+  height:9.2rem; overflow:hidden;
+  border-bottom:1px solid #e1e1e1;
+}
+
+.casaitem li .pic,
+#list_holder li .pic{
+  float:left;
+  margin-right:1rem;
+  width:12.5rem;
+}
+
+.casaitem li h1,
+#list_holder li h1{
+  margin:.7rem 0 .5rem;
+  font-weight:400; font-size:1.5rem; color:#333;
+}
+
+.casaitem li h2,
+#list_holder li h2{
+  font-weight:500; font-size:1.4rem; color:#333;
+}
+
+.casaitem li .infos,
+#list_holder li .infos{
+  position: absolute;
+  bottom:.5rem; left:13.5rem;
+  font-weight:400; font-size:1.2rem; line-height:normal; color:#333; text-align:left;
+}
+
 .infoBox,
 .infoBox.arrow-up,
 .infoBox.arrow-right,
@@ -42,7 +137,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid #FFF;
+  border-top: 15px solid #FFF;
   position:absolute;
   top:100%;
   left:50%;
@@ -55,10 +150,10 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #FFF;
+  border-bottom: 15px solid #FFF;
   border-top:0 none;
   position:absolute;
-  top:-10px;
+  top:-15px;
   left:50%;
   margin-left:-.5rem;
 }
@@ -69,12 +164,12 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #FFF;
+  border-left: 15px solid #FFF;
   border-right:0 none;
   position:absolute;
   top:50%;
   left:auto;
-  right:-10px;
+  right:-15px;
   margin-top:-.5rem;
   margin-left:0; 
 }
@@ -85,7 +180,7 @@
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #FFF;
+  border-right: 15px solid #FFF;
   border-left:0 none;
   position:absolute;
   top:50%;
